@@ -1,0 +1,11 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"ffiGetFuncDesc:at:" : "PabloTesone 9/1/2017 10:58",
+		"ffiGetNamesOf:into:size:count:" : "PabloTesone 9/7/2017 16:31",
+		"ffiGetTypeAttr:" : "PabloTesone 8/31/2017 23:31",
+		"ffiGetTypeComp:" : "PabloTesone 9/1/2017 10:57",
+		"ffiGetVarDesc:at:" : "PabloTesone 9/7/2017 16:30",
+		"getNamesOfMemberID:maxNames:" : "PabloTesone 9/7/2017 16:31",
+		"typeAttributes" : "PabloTesone 9/1/2017 10:48" } }

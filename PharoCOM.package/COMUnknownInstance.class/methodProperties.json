@@ -1,0 +1,10 @@
+{
+	"class" : {
+		"finalizeResourceData:" : "PabloTesone 8/31/2017 00:58" },
+	"instance" : {
+		"addRef" : "PabloTesone 8/31/2017 00:55",
+		"ffiQueryInterface:into:" : "PabloTesone 9/1/2017 09:52",
+		"finalize" : "PabloTesone 9/1/2017 00:35",
+		"queryInterface:returnClass:" : "PabloTesone 9/1/2017 10:50",
+		"release" : "PabloTesone 8/31/2017 00:55",
+		"reportError:" : "PabloTesone 9/1/2017 10:51" } }

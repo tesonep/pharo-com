@@ -1,0 +1,22 @@
+{
+	"category" : "PharoCOM-Enums",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		"TKIND_ALIAS",
+		"TKIND_COCLASS",
+		"TKIND_DISPATCH",
+		"TKIND_ENUM",
+		"TKIND_INTERFACE",
+		"TKIND_MAX",
+		"TKIND_MODULE",
+		"TKIND_RECORD",
+		"TKIND_UNION" ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "COMTypeKind",
+	"pools" : [
+		 ],
+	"super" : "FFIExternalEnumeration",
+	"type" : "normal" }

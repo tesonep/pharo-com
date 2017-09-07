@@ -1,0 +1,14 @@
+{
+	"category" : "VTable-FFI-Extension",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"tablePosition" ],
+	"name" : "VTableFFICalloutAPI",
+	"pools" : [
+		 ],
+	"super" : "FFICalloutAPI",
+	"type" : "normal" }

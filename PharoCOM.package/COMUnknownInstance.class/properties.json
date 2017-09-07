@@ -1,0 +1,14 @@
+{
+	"category" : "PharoCOM",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "COMUnknownInstance",
+	"pools" : [
+		"Win32Types" ],
+	"super" : "FFIExternalVTableObject",
+	"type" : "normal" }

@@ -1,0 +1,14 @@
+{
+	"category" : "PharoWin32",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "User32Lib",
+	"pools" : [
+		"Win32Types" ],
+	"super" : "FFILibrary",
+	"type" : "normal" }

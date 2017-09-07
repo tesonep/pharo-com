@@ -1,0 +1,9 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"ffiMultiByteToWideCharacterCodepage:flags:input:inputLen:output:outputLen:" : "PabloTesone 8/29/2016 09:45",
+		"ffiWideCharacterToMultiByteCodepage:flags:input:inputLen:output:outputLen:" : "PabloTesone 8/27/2017 13:46",
+		"lastError" : "PabloTesone 8/29/2016 09:46",
+		"reportError:" : "PabloTesone 9/1/2017 10:51",
+		"win32ModuleName" : "PabloTesone 8/29/2016 09:34" } }

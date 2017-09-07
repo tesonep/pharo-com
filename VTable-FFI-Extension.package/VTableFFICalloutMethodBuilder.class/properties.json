@@ -1,0 +1,14 @@
+{
+	"category" : "VTable-FFI-Extension",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "VTableFFICalloutMethodBuilder",
+	"pools" : [
+		 ],
+	"super" : "FFICalloutMethodBuilder",
+	"type" : "normal" }
