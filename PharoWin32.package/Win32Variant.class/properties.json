@@ -3,7 +3,8 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"PointerType",
+		"TypeMapping" ],
 	"commentStamp" : "",
 	"instvars" : [
 		 ],

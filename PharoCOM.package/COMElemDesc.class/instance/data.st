@@ -1,4 +1,4 @@
 accessing structure variables
 data
 	"This method was automatically generated"
-	^(FFITypeArray ofType: #FFIUInt8 size: 8) fromHandle: (handle copyFrom: 9 to: 16)
+	^COMParamDesc fromHandle: (handle referenceStructAt: 9 length: 8)

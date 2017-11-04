@@ -2,10 +2,19 @@
 	"class" : {
 		 },
 	"instance" : {
+		"calculateMethodAt:" : "PabloTesone 9/11/2017 17:36",
+		"calculateMethods" : "PabloTesone 9/11/2017 17:37",
+		"calculateProperties" : "PabloTesone 9/11/2017 17:48",
 		"ffiGetFuncDesc:at:" : "PabloTesone 9/1/2017 10:58",
 		"ffiGetNamesOf:into:size:count:" : "PabloTesone 9/7/2017 16:31",
 		"ffiGetTypeAttr:" : "PabloTesone 8/31/2017 23:31",
 		"ffiGetTypeComp:" : "PabloTesone 9/1/2017 10:57",
 		"ffiGetVarDesc:at:" : "PabloTesone 9/7/2017 16:30",
-		"getNamesOfMemberID:maxNames:" : "PabloTesone 9/7/2017 16:31",
+		"ffiInvokeOn:memberId:flags:params:resultHolder:exceptionInfo:argumentError:" : "PabloTesone 9/13/2017 18:06",
+		"ffiReleaseFuncDesc:" : "PabloTesone 9/7/2017 19:04",
+		"ffiReleaseTypeAttr:" : "PabloTesone 9/7/2017 18:57",
+		"functions" : "PabloTesone 9/11/2017 17:38",
+		"getNamesOfMemberID:maxNames:" : "PabloTesone 9/7/2017 19:49",
+		"methods" : "PabloTesone 9/11/2017 17:37",
+		"properties" : "PabloTesone 9/11/2017 17:43",
 		"typeAttributes" : "PabloTesone 9/1/2017 10:48" } }

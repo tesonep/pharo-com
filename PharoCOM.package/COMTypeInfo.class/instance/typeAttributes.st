@@ -1,4 +1,4 @@
-ffi-calls
+querying
 typeAttributes
 	| pointer returnCode |
 	pointer := ExternalAddress allocate: Smalltalk wordSize.

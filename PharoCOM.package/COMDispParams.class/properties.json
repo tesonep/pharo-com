@@ -1,0 +1,14 @@
+{
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "COMDispParams",
+	"pools" : [
+		"Win32Types" ],
+	"super" : "FFIExternalStructure",
+	"type" : "normal" }

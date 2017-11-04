@@ -1,0 +1,17 @@
+{
+	"category" : "PharoCOM",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"name",
+		"type",
+		"getter",
+		"setter" ],
+	"name" : "COMProperty",
+	"pools" : [
+		"Win32Types" ],
+	"super" : "Object",
+	"type" : "normal" }

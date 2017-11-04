@@ -3,7 +3,11 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"FUNC_DISPATCH",
+		"FUNC_NONVIRTUAL",
+		"FUNC_PUREVIRTUAL",
+		"FUNC_STATIC",
+		"FUNC_VIRTUAL" ],
 	"commentStamp" : "",
 	"instvars" : [
 		 ],

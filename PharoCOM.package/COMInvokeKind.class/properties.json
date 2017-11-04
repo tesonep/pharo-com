@@ -3,7 +3,10 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"INVOKE_FUNC",
+		"INVOKE_PROPERTYGET",
+		"INVOKE_PROPERTYPUT",
+		"INVOKE_PROPERTYPUTREF" ],
 	"commentStamp" : "",
 	"instvars" : [
 		 ],

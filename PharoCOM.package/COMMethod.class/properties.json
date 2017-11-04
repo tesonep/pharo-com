@@ -1,0 +1,21 @@
+{
+	"category" : "PharoCOM",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"memberId",
+		"name",
+		"parameterNames",
+		"parameterTypes",
+		"returnType",
+		"invokeKind",
+		"optionalParameters",
+		"typeInfo" ],
+	"name" : "COMMethod",
+	"pools" : [
+		"Win32Types" ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -19,18 +19,25 @@ initialize
 		
 	HWND := #'void*'.
 	UINT := #uint.
+	
+	UINT_PTR := FFIExternalValueHolder ofType: 'uint'.
+	ULONG_PTR := FFIExternalValueHolder ofType: 'ulong'.
+	
 	LPCLSID := #'void*'.
 	WORD := #ushort.
 	BYTE := #byte.
 	VARTYPE := #ushort.
 	SHORT := #short.
-	
+	USHORT := #ushort.
+		
 	Byte8 := FFITypeArray ofType: 'byte' size: 8.
 	LCID := DWORD.
 	
 	DISPID := LONG.
 	MEMBERID := DISPID.
 	LPOLESTR := BSTR.
+	
+	VARIANT := #'Win32Variant'.
 	
 	TYPEKIND := #COMTypeKind.
 	TYPEDESC := #COMTypeDesc.
@@ -39,5 +46,9 @@ initialize
 	FUNCKIND := #COMFuncKind.
 	INVOKEKIND := #COMInvokeKind.
 	CALLCONV := #COMCallConv.
+	TYPEATTR := #COMTypeAttributes.
+	FUNCDESC := #COMFuncDesc.
+	PARAMDESC := #COMParamDesc.
+	LPPARAMDESCEX := #'void*'.
 	
 	SCODE := LONG.

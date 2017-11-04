@@ -5,5 +5,5 @@ fieldsDesc
 	"
 	^ #(
 		TYPEDESC tdesc;
-		Byte8 data
+		PARAMDESC data
 	)

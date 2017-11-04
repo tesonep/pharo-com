@@ -6,6 +6,7 @@ getNamesOfMemberID: memberId maxNames: maxNames
 	arrayStrings autoRelease.
 
 	holder := ExternalAddress allocate: Smalltalk wordSize.	
+	holder autoRelease.
 
 	return := self ffiGetNamesOf: memberId into: arrayStrings size: maxNames count: holder.
 	(return ~= 0) ifTrue:[self reportError: return].

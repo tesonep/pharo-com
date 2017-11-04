@@ -1,5 +1,9 @@
-as yet unclassified
+initialization
 initializeTypeMapping
+
+"	self initializeTypeMapping. "
+
+	PointerType := 26.
 	TypeMapping := {  
        	1 -> #NULL.
 		 	2 -> #int16.
@@ -25,7 +29,7 @@ initializeTypeMapping
 			23 -> #uint.
 			24 -> #VOID.
 			25 -> #HRESULT.
-			26 -> #'void*'.
+			26 -> #PTR.
 			27 -> #SAFEARRAY.
 			28 -> #CARRAY.
 			29 -> #USERDEFINED.
