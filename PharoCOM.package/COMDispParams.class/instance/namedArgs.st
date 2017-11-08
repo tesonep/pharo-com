@@ -1,4 +1,6 @@
 accessing structure variables
 namedArgs
 	"This method was automatically generated"
-	^ExternalData fromHandle: (handle pointerAt: 5) type: ExternalType long asPointerType
+	^ExternalData 
+		fromHandle: (handle platformLongAt: OFFSET_NAMEDARGS)
+		type: FFIArchitecture forCurrentArchitecture externalLongType asPointerType

@@ -1,14 +1,18 @@
 {
-	"category" : "PharoCOM-Types",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMDispParams",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_ARGS",
+		"OFFSET_CARGS",
+		"OFFSET_CNAMEDARGS",
+		"OFFSET_NAMEDARGS"
+	],
+	"instvars" : [ ],
+	"name" : "COMDispParams",
+	"type" : "normal"
+}

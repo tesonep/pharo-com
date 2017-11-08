@@ -1,14 +1,16 @@
 {
-	"category" : "PharoCOM-Types",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMIdlDesc",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_DWRESERVED",
+		"OFFSET_WIDLFLAGS"
+	],
+	"instvars" : [ ],
+	"name" : "COMIdlDesc",
+	"type" : "normal"
+}

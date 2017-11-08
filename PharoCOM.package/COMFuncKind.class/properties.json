@@ -1,18 +1,17 @@
 {
+	"commentStamp" : "",
+	"super" : "FFIExternalEnumeration",
 	"category" : "PharoCOM-Enums",
-	"classinstvars" : [
-		 ],
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [
 		"FUNC_DISPATCH",
 		"FUNC_NONVIRTUAL",
 		"FUNC_PUREVIRTUAL",
 		"FUNC_STATIC",
-		"FUNC_VIRTUAL" ],
-	"commentStamp" : "",
-	"instvars" : [
-		 ],
+		"FUNC_VIRTUAL"
+	],
+	"instvars" : [ ],
 	"name" : "COMFuncKind",
-	"pools" : [
-		 ],
-	"super" : "FFIExternalEnumeration",
-	"type" : "normal" }
+	"type" : "normal"
+}

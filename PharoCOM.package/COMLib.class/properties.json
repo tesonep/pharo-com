@@ -1,14 +1,13 @@
 {
-	"category" : "PharoCOM",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMLib",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFILibrary",
-	"type" : "normal" }
+	"category" : "PharoCOM",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "COMLib",
+	"type" : "normal"
+}

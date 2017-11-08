@@ -1,11 +1,11 @@
 ffi-calls
-ffiInvokeOn: instance memberId: memid flags: wFlags params: dispparams resultHolder: result exceptionInfo: excepInfo argumentError: argumentErrorHolder
+ffiInvokeOn: instance memberId: memid flags: wFlags params: dispparams resultHolder: resultHolder exceptionInfo: excepInfo argumentError: argumentErrorHolder
 	^ self ffiCall: #(HRESULT Invoke ( 
             self,
-            PVOID instance,
+            COMUnknownInstance instance,
             MEMBERID memid,
             WORD wFlags,
-            DISPPARAMS *dispparams,
-            VARIANT *resultHolder,
-            EXCEPINFO *excepInfo,
-            UINT *argumentErrorHolder)) at: 12
+            COMDispParams dispparams,
+            Win32Variant resultHolder,
+            COMExcepInfo excepInfo,
+            void* argumentErrorHolder)) at: 12

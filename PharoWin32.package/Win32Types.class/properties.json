@@ -1,15 +1,19 @@
 {
+	"commentStamp" : "",
+	"super" : "SharedPool",
 	"category" : "PharoWin32-Types",
-	"classinstvars" : [
-		 ],
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [
 		"BSTR",
 		"BYTE",
 		"Byte8",
 		"CALLCONV",
 		"DISPID",
+		"DISPPARAMS",
 		"DWORD",
 		"ELEMDESC",
+		"EXCEPINFO",
 		"FUNCDESC",
 		"FUNCKIND",
 		"HRESULT",
@@ -17,6 +21,7 @@
 		"IDLDESC",
 		"INVOKEKIND",
 		"LCID",
+		"LOCALE_USER_DEFAULT",
 		"LONG",
 		"LPBSTR",
 		"LPCLSID",
@@ -29,6 +34,7 @@
 		"LPWSTR",
 		"MEMBERID",
 		"PARAMDESC",
+		"PVOID",
 		"SCODE",
 		"SHORT",
 		"TYPEATTR",
@@ -41,12 +47,9 @@
 		"USHORT",
 		"VARIANT",
 		"VARTYPE",
-		"WORD" ],
-	"commentStamp" : "",
-	"instvars" : [
-		 ],
+		"WORD"
+	],
+	"instvars" : [ ],
 	"name" : "Win32Types",
-	"pools" : [
-		 ],
-	"super" : "SharedPool",
-	"type" : "normal" }
+	"type" : "normal"
+}

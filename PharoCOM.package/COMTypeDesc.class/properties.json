@@ -1,15 +1,18 @@
 {
-	"category" : "PharoCOM-Types",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		"PointerType",
-		"TypeMapping" ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMTypeDesc",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_CONTENT",
+		"OFFSET_VT",
+		"PointerType",
+		"TypeMapping"
+	],
+	"instvars" : [ ],
+	"name" : "COMTypeDesc",
+	"type" : "normal"
+}

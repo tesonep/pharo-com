@@ -1,15 +1,20 @@
 {
-	"category" : "PharoCOM",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "COMUnknownInstance",
+	"category" : "PharoCOM",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [ ],
 	"instvars" : [
 		"methods",
-		"properties" ],
+		"properties",
+		"guid",
+		"typeKind",
+		"typeFlags",
+		"implementedTypesNumber"
+	],
 	"name" : "COMTypeInfo",
-	"pools" : [
-		"Win32Types" ],
-	"super" : "COMUnknownInstance",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,14 +1,18 @@
 {
-	"category" : "PharoWin32-Objects",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "GUID",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoWin32-Objects",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_DATA1",
+		"OFFSET_DATA2",
+		"OFFSET_DATA3",
+		"OFFSET_DATA4"
+	],
+	"instvars" : [ ],
+	"name" : "GUID",
+	"type" : "normal"
+}

@@ -1,7 +1,9 @@
 {
+	"commentStamp" : "",
+	"super" : "FFIExternalEnumeration",
 	"category" : "PharoCOM-Enums",
-	"classinstvars" : [
-		 ],
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [
 		"TKIND_ALIAS",
 		"TKIND_COCLASS",
@@ -11,12 +13,9 @@
 		"TKIND_MAX",
 		"TKIND_MODULE",
 		"TKIND_RECORD",
-		"TKIND_UNION" ],
-	"commentStamp" : "",
-	"instvars" : [
-		 ],
+		"TKIND_UNION"
+	],
+	"instvars" : [ ],
 	"name" : "COMTypeKind",
-	"pools" : [
-		 ],
-	"super" : "FFIExternalEnumeration",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,5 +1,6 @@
-querying
+private
 typeAttributes
+	"It should release the received object using #ffiReleaseTypeAttributes:"
 	| pointer returnCode |
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.

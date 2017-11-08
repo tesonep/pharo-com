@@ -1,4 +1,4 @@
-as yet unclassified
+class initialization
 initialize
 	" 
 		self initialize 
@@ -29,8 +29,12 @@ initialize
 	VARTYPE := #ushort.
 	SHORT := #short.
 	USHORT := #ushort.
-		
+	
+	PVOID := #'void*'.
+	
 	Byte8 := FFITypeArray ofType: 'byte' size: 8.
+	
+	"COM Types"
 	LCID := DWORD.
 	
 	DISPID := LONG.
@@ -50,5 +54,10 @@ initialize
 	FUNCDESC := #COMFuncDesc.
 	PARAMDESC := #COMParamDesc.
 	LPPARAMDESCEX := #'void*'.
+	DISPPARAMS := #COMDispParams.
+	EXCEPINFO := #COMExcepInfo.
 	
 	SCODE := LONG.
+	
+	" CONST "
+	LOCALE_USER_DEFAULT := 16r400.

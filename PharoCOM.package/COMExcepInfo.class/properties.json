@@ -1,14 +1,23 @@
 {
-	"category" : "PharoCOM-Types",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMExcepInfo",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_BSTRDESCRIPTION",
+		"OFFSET_BSTRHELPFILE",
+		"OFFSET_BSTRSOURCE",
+		"OFFSET_DWHELPCONTEXT",
+		"OFFSET_PFNDEFERREDFILLIN",
+		"OFFSET_PVRESERVED",
+		"OFFSET_SCODE",
+		"OFFSET_WCODE",
+		"OFFSET_WRESERVED"
+	],
+	"instvars" : [ ],
+	"name" : "COMExcepInfo",
+	"type" : "normal"
+}

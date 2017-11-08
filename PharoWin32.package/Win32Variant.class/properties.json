@@ -1,15 +1,21 @@
 {
-	"category" : "PharoWin32-Objects",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		"PointerType",
-		"TypeMapping" ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "Win32Variant",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoWin32-Objects",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_DATA",
+		"OFFSET_VT",
+		"OFFSET_WRESERVED1",
+		"OFFSET_WRESERVED2",
+		"OFFSET_WRESERVED3",
+		"PointerType",
+		"TypeMapping"
+	],
+	"instvars" : [ ],
+	"name" : "Win32Variant",
+	"type" : "normal"
+}

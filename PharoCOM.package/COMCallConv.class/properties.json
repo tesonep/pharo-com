@@ -1,7 +1,9 @@
 {
+	"commentStamp" : "",
+	"super" : "FFIExternalEnumeration",
 	"category" : "PharoCOM-Enums",
-	"classinstvars" : [
-		 ],
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [
 		"CC_CDECL",
 		"CC_FASTCALL",
@@ -12,12 +14,9 @@
 		"CC_MPWPASCAL",
 		"CC_MSCPASCAL",
 		"CC_STDCALL",
-		"CC_SYSCALL" ],
-	"commentStamp" : "",
-	"instvars" : [
-		 ],
+		"CC_SYSCALL"
+	],
+	"instvars" : [ ],
 	"name" : "COMCallConv",
-	"pools" : [
-		 ],
-	"super" : "FFIExternalEnumeration",
-	"type" : "normal" }
+	"type" : "normal"
+}

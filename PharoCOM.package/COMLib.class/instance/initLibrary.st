@@ -1,5 +1,5 @@
-as yet unclassified
-initialize
+common
+initLibrary
    | r |
 	super initialize.
 	r := self ffiOleInitialize.

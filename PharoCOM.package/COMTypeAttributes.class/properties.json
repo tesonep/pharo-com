@@ -1,14 +1,32 @@
 {
-	"category" : "PharoCOM-Types",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "COMTypeAttributes",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFIExternalStructure",
-	"type" : "normal" }
+	"category" : "PharoCOM-Types",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"OFFSET_CBALIGNMENT",
+		"OFFSET_CBSIZEINSTANCE",
+		"OFFSET_CBSIZEVFT",
+		"OFFSET_CFUNCS",
+		"OFFSET_CIMPLTYPES",
+		"OFFSET_CVARS",
+		"OFFSET_DWRESERVED",
+		"OFFSET_GUID",
+		"OFFSET_IDLDESCTYPE",
+		"OFFSET_LCID",
+		"OFFSET_LPSTRSCHEMA",
+		"OFFSET_MEMIDCONSTRUCTOR",
+		"OFFSET_MEMIDDESTRUCTOR",
+		"OFFSET_TDESCALIAS",
+		"OFFSET_TYPEKIND",
+		"OFFSET_WMAJORVERNUM",
+		"OFFSET_WMINORVERNUM",
+		"OFFSET_WTYPEFLAGS"
+	],
+	"instvars" : [ ],
+	"name" : "COMTypeAttributes",
+	"type" : "normal"
+}

@@ -1,14 +1,13 @@
 {
-	"category" : "PharoWin32",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "User32Lib",
-	"pools" : [
-		"Win32Types" ],
 	"super" : "FFILibrary",
-	"type" : "normal" }
+	"category" : "PharoWin32",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "User32Lib",
+	"type" : "normal"
+}
