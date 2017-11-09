@@ -3,10 +3,10 @@ ffiInvokeMemberId: memid refiid: refiid lcid: lcid flags: wFlags params: disppar
 	^ self ffiCall: #(HRESULT Invoke ( 
             self,
             MEMBERID memid,
-			   void* refiid,
+			   GUID* refiid,
 			   LCID lcid,
             WORD wFlags,
-            void* dispparams,
-            void* resultHolder,
-            void* excepInfo,
+            COMDispParams* dispparams,
+            Win32Variant* resultHolder,
+            COMExcepInfo* excepInfo,
             void* argumentErrorHolder)) at: 7

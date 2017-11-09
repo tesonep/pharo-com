@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "PharoWin32-Types-Variant",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"typeNumber"
+	],
+	"name" : "Win32VariantVoid",
+	"type" : "normal"
+}

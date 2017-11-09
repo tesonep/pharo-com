@@ -1,3 +1,3 @@
-as yet unclassified
+testing
 isPointerType
-	^ self vt = PointerType
+	^ Win32Variant isPointer: self vt 

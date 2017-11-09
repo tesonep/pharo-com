@@ -8,9 +8,7 @@
 	],
 	"classvars" : [
 		"OFFSET_CONTENT",
-		"OFFSET_VT",
-		"PointerType",
-		"TypeMapping"
+		"OFFSET_VT"
 	],
 	"instvars" : [ ],
 	"name" : "COMTypeDesc",

@@ -1,31 +1,30 @@
 invoking
 invokeOn: anObject withArgs: arguments
-	| result returnedValue dispparams exceptionInfo argumentError nullGuid namedArgs |
+	| result returnedValue exceptionInfo argumentError |
 	argumentError := ExternalAddress allocate: Smalltalk wordSize.
+
 	argumentError autoRelease.
 	argumentError unsignedLongAt: 1 put: 0.
-	
+
 	returnedValue := Win32Variant externalNew.
-	returnedValue autoRelease. 
-	
+	returnedValue autoRelease.
+
 	exceptionInfo := COMExcepInfo externalNew.
-	exceptionInfo autoRelease. 
+	exceptionInfo autoRelease.
 
-	namedArgs := (self invokeKind = COMInvokeKind Put) ifTrue:[#(-3)] ifFalse:[#()].
-
-	dispparams := COMDispParams externalFor: arguments namedArgs: namedArgs.
-	nullGuid := GUID clsidFromString: '{00000000-0000-0000-0000-000000000000}'.
-	
 	result := anObject
 		ffiInvokeMemberId: self memberId
-		refiid: nullGuid getHandle
+		refiid: GUID nullGuid
 		lcid: LOCALE_USER_DEFAULT
-		flags: self invokeKind value 
-		params: dispparams getHandle
-		resultHolder: returnedValue getHandle 
-		exceptionInfo: exceptionInfo getHandle
+		flags: self invokeKind value
+		params: (self buildFunctionArguments: arguments)
+		resultHolder: returnedValue
+		exceptionInfo: exceptionInfo
 		argumentError: argumentError.
-	
-	(result ~= 0) ifTrue: [self reportError: result].
-		
-	^ returnedValue
+
+	result ~= 0
+		ifTrue: [ self reportError: result ].
+
+	^ returnType isVoid
+		ifTrue: [ ^ anObject ]
+		ifFalse: [ returnedValue read ]

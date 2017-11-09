@@ -1,0 +1,3 @@
+comparing
+typeName
+	^ 'VOID'

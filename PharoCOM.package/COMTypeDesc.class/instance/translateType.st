@@ -1,3 +1,3 @@
-as yet unclassified
+types
 translateType 
-	^ (TypeMapping at: self vt) asString.
+	^ Win32Variant typeFor: self vt.

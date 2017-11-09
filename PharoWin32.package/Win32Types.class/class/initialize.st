@@ -32,7 +32,7 @@ initialize
 	
 	PVOID := #'void*'.
 	
-	Byte8 := FFITypeArray ofType: 'byte' size: 8.
+	Byte8 := FFITypeArray ofType: #byte size: 8.
 	
 	"COM Types"
 	LCID := DWORD.

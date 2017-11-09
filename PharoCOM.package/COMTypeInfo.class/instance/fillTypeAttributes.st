@@ -3,7 +3,7 @@ fillTypeAttributes
 	| typeAttributes |
 	[ 
 		typeAttributes := self typeAttributes.
-		guid := typeAttributes guid copy.
+		guid := typeAttributes guid asString.
 		typeKind := typeAttributes typekind.
 		typeFlags := typeAttributes wTypeFlags.
 		implementedTypesNumber := typeAttributes cImplTypes.

@@ -2,7 +2,7 @@ printing
 printOn: aStream
 	aStream 
 				nextPutAll: 'COMMethod (';
-				nextPutAll: self returnType asString;
+				nextPutAll: self returnType typeName;
 				nextPut: Character space;
 				nextPutAll: self name;
 				nextPut: $(;

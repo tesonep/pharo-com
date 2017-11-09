@@ -1,8 +1,8 @@
 instance creation
 createInstanceOf: clsidString
 	| refiid pointer ret clsid |
-	refiid := GUID clsidFromString: '{00020400-0000-0000-C000-000000000046}'.
-	clsid := GUID clsidFromString: clsidString.
+	refiid := GUID fromString: '{00020400-0000-0000-C000-000000000046}'.
+	clsid := GUID fromString: clsidString.
 	
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.

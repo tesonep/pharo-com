@@ -1,5 +1,5 @@
-as yet unclassified
-clsidFromString: aString
+instance creation
+fromString: aString
 	| guid |
 	guid := self externalNew autoRelease; yourself.
 	
