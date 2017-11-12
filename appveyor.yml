@@ -12,6 +12,7 @@ environment:
 
 platform:
   - x86
+  - x64
 
 install:
   - '%CYG_EXE% -dgnqNO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P unzip'
