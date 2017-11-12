@@ -1,0 +1,8 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'PharoWin32',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
