@@ -1,7 +1,7 @@
-as yet unclassified
+printing
 printOn: aStream
 	aStream nextPutAll: 'COMProperty (';
-	print: type;
+	print: type typeName;
 	nextPut: Character space;
 	nextPutAll: name;
 	nextPutAll: ( getter ifNotNil: [' [GET] '] ifNil: ['']  );

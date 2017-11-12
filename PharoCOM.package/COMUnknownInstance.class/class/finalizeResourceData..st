@@ -1,3 +1,3 @@
-as yet unclassified
+finalization
 finalizeResourceData: handle
-	(self fromHandle: handle) finalize.
+	(self basicFromHandle: handle) finalize.

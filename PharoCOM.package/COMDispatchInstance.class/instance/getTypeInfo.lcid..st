@@ -1,6 +1,6 @@
 querying
 getTypeInfo: iTInfo lcid: lcid
-	| typeInfo return pointer |
+	| return pointer |
 	
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.
@@ -10,5 +10,4 @@ getTypeInfo: iTInfo lcid: lcid
 	(return ~= 0) ifTrue:[ self reportError: return].
 	
 	typeInfo := COMTypeInfo fromHandle:  pointer.
-	typeInfo autoRelease.
 	^ typeInfo.

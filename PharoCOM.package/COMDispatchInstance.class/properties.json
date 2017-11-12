@@ -8,7 +8,8 @@
 	],
 	"classvars" : [ ],
 	"instvars" : [
-		"typeInfo"
+		"typeInfo",
+		"dispatchType"
 	],
 	"name" : "COMDispatchInstance",
 	"type" : "normal"

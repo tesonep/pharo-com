@@ -8,4 +8,4 @@ queryInterface: aGUID returnClass: aClass
 	
 	(ret ~= 0) ifTrue:[ self reportError: ret].
 	
-	^ (aClass fromHandle: holder) autoRelease; yourself.
+	^ (aClass fromHandle: holder).

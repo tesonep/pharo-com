@@ -14,10 +14,10 @@ initialize
 	LPSTR := LPCSTR.
 	LPWSTR := #Win32WideString.
 	LPCWCH := LPWSTR.
-	BSTR := #Win32WideString.
-	LPBSTR := #'Win32WideString*'.
+	BSTR := #'void*'.
+	LPBSTR := #'void**'.
 		
-	HWND := #'void*'.
+	HWND := LONG.
 	UINT := #uint.
 	
 	UINT_PTR := FFIExternalValueHolder ofType: 'uint'.
@@ -39,7 +39,7 @@ initialize
 	
 	DISPID := LONG.
 	MEMBERID := DISPID.
-	LPOLESTR := BSTR.
+	LPOLESTR := #Win32WideString.
 	
 	VARIANT := #'Win32Variant'.
 	

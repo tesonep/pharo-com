@@ -1,32 +1,19 @@
 tests
 testAccessingBoolProperties
-	| obj dispatchType get_visible put_visible get_resizable v variantTrue variantFalse |
+	| obj value |
 	COMLib uniqueInstance initLibrary.
 
 	obj := COMDispatchInstance createInstanceOf: '{0002DF01-0000-0000-C000-000000000046}' "InternetExplorer".
 
-	dispatchType := obj getDispatchType.
+	value := obj propertyNamed: #Resizable.
+	self assert: value equals: true.
 
-	get_visible := dispatchType methods at:41.
-	put_visible := dispatchType methods at:42.
+	value := obj propertyNamed: #Visible.
+	self assert: value equals: false.
 
-	get_resizable := dispatchType methods at:70.
+	obj propertyNamed: #Resizable put: false.
 
-	v := get_resizable invokeOn: obj withArgs: #(). 
-	v := get_visible invokeOn: obj withArgs: #().
+	(Delay forSeconds: 2) wait.
 
-	variantTrue := Win32Variant externalNew.
-	variantTrue vt: 11.
-	variantTrue getHandle unsignedByteAt: 9 put: 16rFF.
-	variantTrue getHandle unsignedByteAt: 10 put: 16rFF.
-	variantTrue autoRelease.
-
-	variantFalse := Win32Variant externalNew.
-	variantFalse vt: 11.
-	variantFalse getHandle unsignedByteAt: 9 put: 0.
-	variantFalse getHandle unsignedByteAt: 10 put: 0.
-	variantFalse autoRelease.
-
-	v:= put_visible invokeOn: obj withArgs: {variantTrue}.
-
-	v:= put_visible invokeOn: obj withArgs: {variantFalse}.
+	value := obj propertyNamed: #Resizable.
+	self assert: value equals: false.

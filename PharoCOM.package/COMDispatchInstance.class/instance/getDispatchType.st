@@ -1,3 +1,5 @@
 querying
 getDispatchType
-	^ self getTypeInfo dispatchInterface
+	^ (dispatchType isNil or: [ dispatchType isNull ])
+		ifTrue: [ dispatchType := self getTypeInfo dispatchInterface ]
+		ifFalse: [ dispatchType ]
