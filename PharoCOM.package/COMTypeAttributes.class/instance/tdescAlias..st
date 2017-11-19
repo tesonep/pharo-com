@@ -1,4 +1,4 @@
 accessing structure variables
 tdescAlias: anObject
 	"This method was automatically generated"
-	handle structAt: 61 put: anObject getHandle length: 8.
+	handle structAt: OFFSET_TDESCALIAS put: anObject getHandle length: COMTypeDesc byteSize

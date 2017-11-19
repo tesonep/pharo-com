@@ -4,7 +4,7 @@
 	"category" : "PharoCOM",
 	"classinstvars" : [ ],
 	"pools" : [
-		"Win32Types"
+		"COMTypes"
 	],
 	"classvars" : [ ],
 	"instvars" : [ ],

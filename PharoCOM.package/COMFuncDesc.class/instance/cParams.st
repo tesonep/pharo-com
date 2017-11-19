@@ -1,4 +1,4 @@
 accessing structure variables
 cParams
 	"This method was automatically generated"
-	^handle signedShortAt: 25
+	^handle signedShortAt: OFFSET_CPARAMS

@@ -1,4 +1,4 @@
 accessing structure variables
 dwHelpContext: anObject
 	"This method was automatically generated"
-	handle unsignedLongAt: 17 put: anObject
+	^handle platformUnsignedLongAt: OFFSET_DWHELPCONTEXT put: anObject

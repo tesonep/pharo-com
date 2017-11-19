@@ -1,4 +1,4 @@
 accessing structure variables
 wReserved
 	"This method was automatically generated"
-	^handle unsignedShortAt: 3
+	^handle unsignedShortAt: OFFSET_WRESERVED

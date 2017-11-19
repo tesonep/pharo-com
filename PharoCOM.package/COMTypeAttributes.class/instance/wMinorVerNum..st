@@ -1,4 +1,4 @@
 accessing structure variables
 wMinorVerNum: anObject
 	"This method was automatically generated"
-	handle unsignedShortAt: 59 put: anObject
+	handle unsignedShortAt: OFFSET_WMINORVERNUM put: anObject

@@ -33,31 +33,11 @@ initialize
 	PVOID := #'void*'.
 	
 	Byte8 := FFITypeArray ofType: #byte size: 8.
-	
-	"COM Types"
-	LCID := DWORD.
-	
-	DISPID := LONG.
-	MEMBERID := DISPID.
+
 	LPOLESTR := #Win32WideString.
 	
 	VARIANT := #'Win32Variant'.
-	
-	TYPEKIND := #COMTypeKind.
-	TYPEDESC := #COMTypeDesc.
-	IDLDESC := #COMIdlDesc.
-	ELEMDESC := #COMElemDesc.
-	FUNCKIND := #COMFuncKind.
-	INVOKEKIND := #COMInvokeKind.
-	CALLCONV := #COMCallConv.
-	TYPEATTR := #COMTypeAttributes.
-	FUNCDESC := #COMFuncDesc.
-	PARAMDESC := #COMParamDesc.
-	LPPARAMDESCEX := #'void*'.
-	DISPPARAMS := #COMDispParams.
-	EXCEPINFO := #COMExcepInfo.
-	
-	SCODE := LONG.
-	
+
+		
 	" CONST "
 	LOCALE_USER_DEFAULT := 16r400.

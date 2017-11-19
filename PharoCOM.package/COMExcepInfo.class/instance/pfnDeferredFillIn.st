@@ -1,4 +1,6 @@
 accessing structure variables
 pfnDeferredFillIn
 	"This method was automatically generated"
-	^ExternalData fromHandle: (handle pointerAt: 25) type: ExternalType ulong asPointerType
+	^ExternalData 
+		fromHandle: (handle platformUnsignedLongAt: OFFSET_PFNDEFERREDFILLIN)
+		type: FFIArchitecture forCurrentArchitecture externalULongType asPointerType

@@ -1,4 +1,4 @@
 accessing structure variables
 funckind: anObject
 	"This method was automatically generated"
-	handle unsignedLongAt: 13 put: anObject value
+	handle unsignedLongAt: OFFSET_FUNCKIND put: anObject value

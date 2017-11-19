@@ -1,4 +1,4 @@
 accessing structure variables
 invkind
 	"This method was automatically generated"
-	^COMInvokeKind fromInteger: (handle unsignedLongAt: 17)
+	^COMInvokeKind fromInteger: (handle unsignedLongAt: OFFSET_INVKIND)

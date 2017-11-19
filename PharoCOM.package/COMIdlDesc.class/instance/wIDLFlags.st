@@ -1,4 +1,4 @@
 accessing structure variables
 wIDLFlags
 	"This method was automatically generated"
-	^handle unsignedShortAt: 5
+	^handle unsignedShortAt: OFFSET_WIDLFLAGS

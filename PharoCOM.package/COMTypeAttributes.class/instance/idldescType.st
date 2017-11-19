@@ -1,4 +1,4 @@
 accessing structure variables
 idldescType
 	"This method was automatically generated"
-	^COMIdlDesc fromHandle: (handle referenceStructAt: 69 length: 8)
+	^ COMIdlDesc fromHandle: (handle referenceStructAt: OFFSET_IDLDESCTYPE length: COMIdlDesc byteSize)

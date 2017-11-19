@@ -1,4 +1,4 @@
 accessing structure variables
 wParamFlags: anObject
 	"This method was automatically generated"
-	handle unsignedShortAt: 5 put: anObject
+	handle unsignedShortAt: OFFSET_WPARAMFLAGS put: anObject

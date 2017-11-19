@@ -1,4 +1,4 @@
 accessing structure variables
 dwReserved
 	"This method was automatically generated"
-	^handle unsignedLongAt: 21
+	^handle platformUnsignedLongAt: OFFSET_DWRESERVED

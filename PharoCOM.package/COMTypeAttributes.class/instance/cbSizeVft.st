@@ -1,4 +1,4 @@
 accessing structure variables
 cbSizeVft
 	"This method was automatically generated"
-	^handle unsignedShortAt: 51
+	^handle unsignedShortAt: OFFSET_CBSIZEVFT

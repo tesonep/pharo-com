@@ -1,4 +1,4 @@
 accessing structure variables
 lpstrSchema
 	"This method was automatically generated"
-	^ExternalData fromHandle: (handle pointerAt: 33) type: ExternalType void asPointerType
+	^ExternalData fromHandle: (handle pointerAt: OFFSET_LPSTRSCHEMA) type: ExternalType void asPointerType

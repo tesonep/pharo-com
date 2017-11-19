@@ -1,4 +1,4 @@
 accessing structure variables
 data: anObject
 	"This method was automatically generated"
-	handle structAt: 9 put: anObject getHandle length: 8.
+	handle structAt: OFFSET_DATA put: anObject getHandle length: COMParamDesc byteSize

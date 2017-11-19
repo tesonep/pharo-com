@@ -1,4 +1,4 @@
 accessing structure variables
 cbSizeInstance
 	"This method was automatically generated"
-	^handle unsignedLongAt: 37
+	^handle platformUnsignedLongAt: OFFSET_CBSIZEINSTANCE

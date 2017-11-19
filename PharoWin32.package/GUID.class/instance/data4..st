@@ -1,4 +1,4 @@
 accessing structure variables
 data4: anObject
 	"This method was automatically generated"
-	handle replaceFrom: 9 to: 16 with: anObject getHandle startingAt: 1
+	handle replaceFrom: OFFSET_DATA4 to: OFFSET_DATA4 + 7 with: anObject getHandle startingAt: 1

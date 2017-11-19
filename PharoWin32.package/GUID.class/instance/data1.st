@@ -1,4 +1,4 @@
 accessing structure variables
 data1
 	"This method was automatically generated"
-	^handle unsignedLongAt: 1
+	^handle platformUnsignedLongAt: OFFSET_DATA1

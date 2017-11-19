@@ -4,7 +4,7 @@
 	"category" : "PharoCOM-Types",
 	"classinstvars" : [ ],
 	"pools" : [
-		"Win32Types"
+		"COMTypes"
 	],
 	"classvars" : [
 		"OFFSET_DWRESERVED",

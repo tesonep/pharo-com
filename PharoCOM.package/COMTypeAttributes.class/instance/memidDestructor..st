@@ -1,4 +1,4 @@
 accessing structure variables
 memidDestructor: anObject
 	"This method was automatically generated"
-	handle signedLongAt: 29 put: anObject
+	^handle platformLongAt: OFFSET_MEMIDDESTRUCTOR put: anObject
