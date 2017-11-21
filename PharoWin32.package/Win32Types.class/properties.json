@@ -28,7 +28,6 @@
 		"ULONG",
 		"ULONG_PTR",
 		"USHORT",
-		"VARIANT",
 		"VARTYPE",
 		"WORD"
 	],

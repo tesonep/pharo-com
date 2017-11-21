@@ -1,10 +1,10 @@
 {
 	"commentStamp" : "",
 	"super" : "FFIExternalStructure",
-	"category" : "PharoWin32-Objects",
+	"category" : "PharoCOM-Variant",
 	"classinstvars" : [ ],
 	"pools" : [
-		"Win32Types"
+		"COMTypes"
 	],
 	"classvars" : [
 		"OFFSET_DATA",

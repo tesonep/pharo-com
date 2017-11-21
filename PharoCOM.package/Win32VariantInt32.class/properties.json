@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "Win32VariantType",
-	"category" : "PharoWin32-Types-Variant",
+	"category" : "PharoCOM-Variant-Types",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

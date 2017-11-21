@@ -6,6 +6,8 @@ initialize
 	DISPID := LONG.
 	MEMBERID := DISPID.
 		
+	VARIANT := #'Win32Variant'.
+		
 	TYPEKIND := #COMTypeKind.
 	TYPEDESC := #COMTypeDesc.
 	IDLDESC := #COMIdlDesc.

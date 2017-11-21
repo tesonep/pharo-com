@@ -35,8 +35,6 @@ initialize
 	Byte8 := FFITypeArray ofType: #byte size: 8.
 
 	LPOLESTR := #Win32WideString.
-	
-	VARIANT := #'Win32Variant'.
 
 		
 	" CONST "

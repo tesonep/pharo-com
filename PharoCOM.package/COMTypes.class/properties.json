@@ -23,7 +23,8 @@
 		"SCODE",
 		"TYPEATTR",
 		"TYPEDESC",
-		"TYPEKIND"
+		"TYPEKIND",
+		"VARIANT"
 	],
 	"instvars" : [ ],
 	"name" : "COMTypes",
