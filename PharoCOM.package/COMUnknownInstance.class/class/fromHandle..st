@@ -1,5 +1,5 @@
 instance creation
 fromHandle: aHandle
-	^ (super fromHandle: aHandle)
+	^ (self basicFromHandle: aHandle)
 		autoRelease;
 		yourself
