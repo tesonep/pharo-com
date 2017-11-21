@@ -17,3 +17,5 @@ testAccessingBoolProperties
 
 	value := obj propertyNamed: #Resizable.
 	self assert: value equals: false.
+
+	obj dispatch: #Quit.
