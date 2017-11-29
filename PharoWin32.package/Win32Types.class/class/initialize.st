@@ -14,8 +14,6 @@ initialize
 	LPSTR := LPCSTR.
 	LPWSTR := #Win32WideString.
 	LPCWCH := LPWSTR.
-	BSTR := #'void*'.
-	LPBSTR := #'void**'.
 		
 	HWND := LONG.
 	UINT := #uint.

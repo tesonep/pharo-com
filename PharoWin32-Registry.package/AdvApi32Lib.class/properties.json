@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "FFILibrary",
+	"category" : "PharoWin32-Registry",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32RegTypes"
+	],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "AdvApi32Lib",
+	"type" : "normal"
+}

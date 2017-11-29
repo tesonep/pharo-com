@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "SharedPool",
+	"category" : "PharoWin32-Registry",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "Win32RegTypes",
+	"type" : "normal"
+}

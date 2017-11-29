@@ -7,6 +7,7 @@
 		"Win32Types"
 	],
 	"classvars" : [
+		"BSTR",
 		"CALLCONV",
 		"DISPID",
 		"DISPPARAMS",
@@ -17,6 +18,7 @@
 		"IDLDESC",
 		"INVOKEKIND",
 		"LCID",
+		"LPBSTR",
 		"LPPARAMDESCEX",
 		"MEMBERID",
 		"PARAMDESC",

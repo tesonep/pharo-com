@@ -5,7 +5,6 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
-		"BSTR",
 		"BYTE",
 		"Byte8",
 		"DWORD",
@@ -13,7 +12,6 @@
 		"HWND",
 		"LOCALE_USER_DEFAULT",
 		"LONG",
-		"LPBSTR",
 		"LPCLSID",
 		"LPCSTR",
 		"LPCWCH",

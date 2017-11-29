@@ -21,5 +21,8 @@ initialize
 	LPPARAMDESCEX := #'void*'.
 	DISPPARAMS := #COMDispParams.
 	EXCEPINFO := #COMExcepInfo.
+
+	BSTR := #'void*'.
+	LPBSTR := #'void**'.
 	
 	SCODE := LONG.
