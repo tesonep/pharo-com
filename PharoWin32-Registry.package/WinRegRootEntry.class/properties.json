@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "FFILibrary",
+	"super" : "WinRegEntry",
 	"category" : "PharoWin32-Registry",
 	"classinstvars" : [ ],
 	"pools" : [
@@ -8,6 +8,6 @@
 	],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "AdvApi32Lib",
+	"name" : "WinRegRootEntry",
 	"type" : "normal"
 }

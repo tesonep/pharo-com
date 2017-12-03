@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "",
+	"super" : "SharedPool",
+	"category" : "PharoWin32-Registry",
+	"classinstvars" : [ ],
+	"pools" : [
+		"Win32Types"
+	],
+	"classvars" : [
+		"HKEY_CLASSES_ROOT",
+		"HKEY_CURRENT_USER",
+		"HKEY_LOCAL_MACHINE",
+		"HKEY_PERFORMANCE_DATA",
+		"HKEY_PERFORMANCE_NLSTEXT",
+		"HKEY_PERFORMANCE_TEXT",
+		"HKEY_USERS"
+	],
+	"instvars" : [ ],
+	"name" : "WinRegTypes",
+	"type" : "normal"
+}
