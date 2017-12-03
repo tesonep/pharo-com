@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "WinRegEntry",
+	"super" : "WinAbstractRegEntry",
 	"category" : "PharoWin32-Registry",
 	"classinstvars" : [ ],
 	"pools" : [

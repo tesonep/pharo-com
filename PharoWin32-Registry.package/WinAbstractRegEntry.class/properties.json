@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "WinAbstractRegEntry",
+	"super" : "Object",
 	"category" : "PharoWin32-Registry",
 	"classinstvars" : [ ],
 	"pools" : [
@@ -8,9 +8,10 @@
 	],
 	"classvars" : [ ],
 	"instvars" : [
-		"parent",
-		"subKey"
+		"handle",
+		"entries",
+		"values"
 	],
-	"name" : "WinRegEntry",
+	"name" : "WinAbstractRegEntry",
 	"type" : "normal"
 }
