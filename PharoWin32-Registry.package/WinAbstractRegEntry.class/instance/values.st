@@ -1,3 +1,3 @@
 accessing
 values
-	^ values
+	^ values  ifNil: [ self fillValues. values ]

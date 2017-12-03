@@ -1,0 +1,1 @@
+I am a SharedPool with all the FFI types used in the registry functions.

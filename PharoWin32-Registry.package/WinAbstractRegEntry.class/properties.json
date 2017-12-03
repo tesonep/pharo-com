@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "PabloTesone 12/3/2017 23:04",
 	"super" : "Object",
 	"category" : "PharoWin32-Registry",
 	"classinstvars" : [ ],
@@ -10,7 +10,12 @@
 	"instvars" : [
 		"handle",
 		"entries",
-		"values"
+		"values",
+		"subKeyCount",
+		"subKeyNameMax",
+		"valuesCount",
+		"valueNameMax",
+		"valueDataMax"
 	],
 	"name" : "WinAbstractRegEntry",
 	"type" : "normal"

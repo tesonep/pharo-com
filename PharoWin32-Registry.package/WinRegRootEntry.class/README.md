@@ -1,0 +1,1 @@
+I represent the default root entries that exists in the Windows Registry. 

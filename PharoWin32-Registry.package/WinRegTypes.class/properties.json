@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "PabloTesone 12/3/2017 23:05",
 	"super" : "SharedPool",
 	"category" : "PharoWin32-Registry",
 	"classinstvars" : [ ],
@@ -7,13 +7,21 @@
 		"Win32Types"
 	],
 	"classvars" : [
+		"HKEY",
 		"HKEY_CLASSES_ROOT",
 		"HKEY_CURRENT_USER",
 		"HKEY_LOCAL_MACHINE",
 		"HKEY_PERFORMANCE_DATA",
 		"HKEY_PERFORMANCE_NLSTEXT",
 		"HKEY_PERFORMANCE_TEXT",
-		"HKEY_USERS"
+		"HKEY_USERS",
+		"KEY_READ",
+		"LPCTSTR",
+		"LPDWORD",
+		"LPTSTR",
+		"PFILETIME",
+		"PHKEY",
+		"REGSAM"
 	],
 	"instvars" : [ ],
 	"name" : "WinRegTypes",
