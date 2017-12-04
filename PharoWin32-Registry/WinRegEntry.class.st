@@ -25,7 +25,6 @@ WinRegEntry >> ensureClose [
 	
 	self handle beNull.
 	self parent ensureClose.
-
 ]
 
 { #category : #private }

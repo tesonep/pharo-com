@@ -36,12 +36,12 @@ WinAbstractRegEntry >> \ aSubKey [
 
 { #category : #private }
 WinAbstractRegEntry >> ensureClose [
-	self subclassResponsibility 
+	self subclassResponsibility
 ]
 
 { #category : #private }
 WinAbstractRegEntry >> ensureOpen [
-	self subclassResponsibility 
+	self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -108,7 +108,6 @@ WinAbstractRegEntry >> queryInfo [
 	valuesCount := valuesCountHolder value.
 	valueNameMax := valueNameMaxHolder value.
 	valueDataMax := valueDataMaxHolder value.
-
 
 ]
 

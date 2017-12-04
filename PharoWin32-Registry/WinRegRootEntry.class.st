@@ -1,5 +1,5 @@
 "
-I represent the default root entries that exists in the Windows Registry. 
+I represent the default root entries that exists in the Windows Registry.
 "
 Class {
 	#name : #WinRegRootEntry,
@@ -34,5 +34,5 @@ WinRegRootEntry >> handle [
 
 { #category : #accessing }
 WinRegRootEntry >> keyName [
-	^ WinRegTypes classPool keyAtValue: self 
+	^ WinRegTypes classPool keyAtValue: self
 ]
