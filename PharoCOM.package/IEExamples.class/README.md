@@ -1,1 +1,0 @@
-I am a class with a bunch of examples in the class side.

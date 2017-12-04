@@ -1,7 +1,0 @@
-tests
-testAsString
-	self doTestAsString: '{0002DF01-0000-0000-C000-000000000046}'.
-	self doTestAsString: '{00000000-0000-0000-0000-000000000000}'.
-
-	self doTestAsString: '{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF}'.
-	self doTestAsString: '{00000001-0001-0001-0101-010101010101}'.

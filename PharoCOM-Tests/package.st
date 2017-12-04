@@ -1,0 +1,1 @@
+Package { #name : #'PharoCOM-Tests' }

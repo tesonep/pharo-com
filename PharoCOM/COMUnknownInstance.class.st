@@ -1,0 +1,69 @@
+Class {
+	#name : #COMUnknownInstance,
+	#superclass : #FFIExternalVTableObject,
+	#pools : [
+		'COMTypes'
+	],
+	#category : 'PharoCOM'
+}
+
+{ #category : #'instance creation' }
+COMUnknownInstance class >> basicFromHandle: aHandle [
+	^ super fromHandle: aHandle
+]
+
+{ #category : #finalization }
+COMUnknownInstance class >> finalizeResourceData: handle [
+	(self basicFromHandle: handle) finalize.
+]
+
+{ #category : #'instance creation' }
+COMUnknownInstance class >> fromHandle: aHandle [
+	^ (self basicFromHandle: aHandle)
+		autoRelease;
+		yourself
+]
+
+{ #category : #'reference counting' }
+COMUnknownInstance >> addRef [
+
+	^ self ffiCall: #(ULONG AddRef(self)) at: 2
+]
+
+{ #category : #'ffi-calls' }
+COMUnknownInstance >> ffiQueryInterface: riid into: holder [
+
+	^ self ffiCall: #(HRESULT QueryInterface(self, GUID* riid, void** holder)) at: 1
+]
+
+{ #category : #finalization }
+COMUnknownInstance >> finalize [
+	handle isNull ifFalse:[ self release ].
+	handle beNull.
+]
+
+{ #category : #querying }
+COMUnknownInstance >> queryInterface: aGUID returnClass: aClass [
+	| holder ret |
+	holder := ExternalAddress allocate: Smalltalk wordSize.
+	holder autoRelease.
+	
+	ret := self ffiQueryInterface: aGUID into: holder.
+	
+	(ret ~= 0) ifTrue:[ self reportError: ret].
+	
+	^ (aClass fromHandle: holder).
+
+]
+
+{ #category : #'reference counting' }
+COMUnknownInstance >> release [
+
+	^ self ffiCall: #(ULONG Release(self)) at: 3
+]
+
+{ #category : #querying }
+COMUnknownInstance >> reportError: returnValue [	
+	Kernel32Lib uniqueInstance reportError: returnValue.
+
+]

@@ -1,3 +1,0 @@
-accessing
-typeName
-	^ inner typeName , '*'
