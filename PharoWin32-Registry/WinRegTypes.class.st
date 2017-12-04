@@ -6,13 +6,6 @@ Class {
 	#superclass : #SharedPool,
 	#classVars : [
 		'HKEY',
-		'HKEY_CLASSES_ROOT',
-		'HKEY_CURRENT_USER',
-		'HKEY_LOCAL_MACHINE',
-		'HKEY_PERFORMANCE_DATA',
-		'HKEY_PERFORMANCE_NLSTEXT',
-		'HKEY_PERFORMANCE_TEXT',
-		'HKEY_USERS',
 		'KEY_ALL_ACCESS',
 		'KEY_CREATE_LINK',
 		'KEY_CREATE_SUB_KEY',
@@ -25,9 +18,11 @@ Class {
 		'KEY_WOW64_32KEY',
 		'KEY_WOW64_64KEY',
 		'KEY_WRITE',
+		'LPBYTE',
 		'LPCTSTR',
 		'LPDWORD',
 		'LPTSTR',
+		'NULL_LPDWORD',
 		'PFILETIME',
 		'PHKEY',
 		'REGSAM'
@@ -40,15 +35,6 @@ Class {
 
 { #category : #'class initialization' }
 WinRegTypes class >> initialize [
-	"Root Key Constants"
-	HKEY_CLASSES_ROOT := WinRegRootEntry fromAddress: 16r80000000.
-	HKEY_CURRENT_USER := WinRegRootEntry fromAddress: 16r80000001.
-	HKEY_LOCAL_MACHINE := WinRegRootEntry fromAddress: 16r80000002.
-	HKEY_USERS := WinRegRootEntry fromAddress: 16r80000003.
-	HKEY_PERFORMANCE_DATA := WinRegRootEntry fromAddress: 16r80000004.
-	HKEY_PERFORMANCE_TEXT := WinRegRootEntry fromAddress: 16r80000050.
-	HKEY_PERFORMANCE_NLSTEXT := WinRegRootEntry fromAddress: 16r80000060.
-
 	"SAM Constants"
 
 	"Combines the STANDARD_RIGHTS_REQUIRED, KEY_QUERY_VALUE, KEY_SET_VALUE, KEY_CREATE_SUB_KEY, KEY_ENUMERATE_SUB_KEYS, KEY_NOTIFY, and KEY_CREATE_LINK access rights."
@@ -87,6 +73,9 @@ WinRegTypes class >> initialize [
 	LPTSTR := 'Win32WideString'.
 	LPCTSTR := 'Win32WideString'.
 
+	LPBYTE := 'void*'.
 	LPDWORD := FFIExternalValueHolder ofType: DWORD.
+	NULL_LPDWORD := FFIExternalObject null.
+
 	PFILETIME := 'void*'.
 ]

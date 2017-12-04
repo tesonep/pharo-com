@@ -7,12 +7,13 @@ Class {
 	#superclass : #WinAbstractRegEntry,
 	#instVars : [
 		'parent',
-		'subKey'
+		'subKey',
+		'desiredAccessLevel'
 	],
 	#pools : [
 		'WinRegTypes'
 	],
-	#category : 'PharoWin32-Registry'
+	#category : #'PharoWin32-Registry'
 }
 
 { #category : #private }
@@ -40,7 +41,7 @@ WinRegEntry >> ensureOpen [
 	subKeyUnicode := Win32WideString fromString: subKey.
 	phkey := PHKEY new.
 	
-	returnCode := AdvApi32Lib uniqueInstance ffiRegOpenKeyEx: parent handle subkey: subKeyUnicode options: 0 samDesired: KEY_READ result: phkey.
+	returnCode := AdvApi32Lib uniqueInstance ffiRegOpenKeyEx: parent handle subkey: subKeyUnicode options: 0 samDesired: desiredAccessLevel result: phkey.
 	
 	(returnCode ~= 0) ifTrue:[ Kernel32Lib uniqueInstance reportError: returnCode].
 	
@@ -50,6 +51,7 @@ WinRegEntry >> ensureOpen [
 { #category : #initialization }
 WinRegEntry >> initialize [
 	handle := ExternalAddress new.
+	desiredAccessLevel := KEY_READ.
 ]
 
 { #category : #accessing }

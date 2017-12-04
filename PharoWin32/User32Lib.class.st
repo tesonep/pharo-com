@@ -9,12 +9,12 @@ Class {
 
 { #category : #'ffi-calls' }
 User32Lib >> ffiMessageBoxUnicode:hwnd text:text caption:caption type: type [	
-	self ffiCall:#(int MessageBoxW(HWND hwnd, LPWSTR text, LPWSTR caption, UINT type)) 
+	self ffiCall:#(int MessageBoxW(HWND hwnd, LPWSTR text, LPWSTR caption, UINT type))
 ]
 
 { #category : #'ffi-calls' }
 User32Lib >> ffiSetFocus: hwnd [	
-	self ffiCall:#(HWND SetFocus(HWND hwnd)) 
+	self ffiCall:#(HWND SetFocus(HWND hwnd))
 ]
 
 { #category : #'as yet unclassified' }
@@ -32,7 +32,7 @@ User32Lib >> messageBox: hwnd text: text caption: caption type: type [
 
 { #category : #'as yet unclassified' }
 User32Lib >> messageBoxText:text caption:caption type: type [
-	^ self messageBox: nil text: text caption: caption type: type 
+	^ self messageBox: nil text: text caption: caption type: type
 ]
 
 { #category : #initialization }

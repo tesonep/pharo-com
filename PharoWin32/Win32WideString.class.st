@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #'instance creation' }
+Win32WideString class >> fromByteArray: byteArray [
+	^ self new
+		handle: byteArray;
+		yourself
+]
+
+{ #category : #'instance creation' }
 Win32WideString class >> fromString: aString [
 	| r wideString anUTF8String |
 	wideString := self new: aString size.
@@ -23,13 +30,12 @@ Win32WideString class >> fromString: aString [
 	^ wideString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 Win32WideString class >> new: size [
-	| obj |
-	obj := self new
+	^ self new
 		handle: (ByteArray new: (size + 1) * 2);
 		yourself.
-	^obj.
+
 ]
 
 { #category : #converting }

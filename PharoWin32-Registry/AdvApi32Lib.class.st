@@ -11,19 +11,40 @@ Class {
 	#category : 'PharoWin32-Registry'
 }
 
-{ #category : #'ffi-calls' }
+{ #category : #'ffi-calls-open-close' }
 AdvApi32Lib >> ffiRegCloseKey: hKey [
 	^ self ffiCall: #(LONG RegCloseKey(HKEY hKey))
 ]
 
-{ #category : #'ffi-calls' }
+{ #category : #'ffi-calls-querying' }
+AdvApi32Lib >> ffiRegEnumKey: hKey index: dwIndex nameHolder: lpName nameSizeHolder: lpcName reserved: lpReserved classNameHolder: lpClass classLengthHolder: lpcClass lastWriteTime: lpftLastWriteTime [
+	^ self
+		ffiCall:
+			#(LONG RegEnumKeyExW (HKEY hKey , DWORD dwIndex , LPTSTR lpName , LPDWORD lpcName , LPDWORD lpReserved , LPTSTR lpClass , LPDWORD lpcClass , PFILETIME lpftLastWriteTime))
+]
+
+{ #category : #'ffi-calls-querying' }
+AdvApi32Lib >> ffiRegEnumValueKey: hKey
+index: dwIndex
+nameHolder: lpValueName
+nameSizeHolder: lpcchValueName
+reserved: lpReserved "Should be Null"
+typeHolder: lpType
+dataHolder: lpData
+dataLengthHolder: lpcbData [
+	^ self
+		ffiCall:
+			#(LONG RegEnumValueW (HKEY hKey , DWORD dwIndex , LPTSTR lpValueName , LPDWORD lpcchValueName , LPDWORD lpReserved , LPDWORD lpType , LPBYTE lpData , LPDWORD lpcbData))
+]
+
+{ #category : #'ffi-calls-open-close' }
 AdvApi32Lib >> ffiRegOpenKeyEx: hKey subkey: lpSubKey options: ulOptions samDesired: samDesired result: phkResult [
 	^ self
 		ffiCall:
 			#(LONG RegOpenKeyExW(HKEY hKey , LPCTSTR lpSubKey , DWORD ulOptions , REGSAM samDesired , PHKEY phkResult))
 ]
 
-{ #category : #'ffi-calls' }
+{ #category : #'ffi-calls-querying' }
 AdvApi32Lib >> ffiRegQueryInfoKey: hKey
 keyClassNameHolder: lpClass
 keyClassNameLengthHolder: lpcClass
