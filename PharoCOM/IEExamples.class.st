@@ -11,6 +11,7 @@ Class {
 IEExamples class >> exampleShowingPharoPage [
 	| obj |
 	
-	obj := COMDispatchInstance createInstanceOf: '{0002DF01-0000-0000-C000-000000000046}' "InternetExplorer".
+	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 	obj propertyNamed: #Visible put: true.
+	obj inspect.
 ]

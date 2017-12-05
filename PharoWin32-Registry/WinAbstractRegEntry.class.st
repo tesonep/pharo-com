@@ -36,6 +36,11 @@ WinAbstractRegEntry >> \ aSubKey [
 		yourself
 ]
 
+{ #category : #accessing }
+WinAbstractRegEntry >> defaultValue [
+	^ self valueNamed: ''
+]
+
 { #category : #'private-open-closing' }
 WinAbstractRegEntry >> ensureClose [
 	self subclassResponsibility

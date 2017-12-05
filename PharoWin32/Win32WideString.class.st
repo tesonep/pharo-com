@@ -14,6 +14,13 @@ Win32WideString class >> fromByteArray: byteArray [
 ]
 
 { #category : #'instance creation' }
+Win32WideString class >> fromHandle: handle [
+	^ self new
+		handle: handle;
+		yourself
+]
+
+{ #category : #'instance creation' }
 Win32WideString class >> fromString: aString [
 	| r wideString anUTF8String |
 	wideString := self new: aString size.

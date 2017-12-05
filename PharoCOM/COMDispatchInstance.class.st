@@ -12,6 +12,16 @@ Class {
 }
 
 { #category : #'instance creation' }
+COMDispatchInstance class >> createInstanceByName: aName [
+	| regKey clsid |
+	
+	regKey := WinRegRootEntry HKEY_CLASSES_ROOT / aName / 'CLSID'.
+	clsid := regKey defaultValue value.
+	
+	^ self createInstanceOf: clsid
+]
+
+{ #category : #'instance creation' }
 COMDispatchInstance class >> createInstanceOf: clsidString [
 	| refiid pointer ret clsid |
 	refiid := GUID fromString: '{00020400-0000-0000-C000-000000000046}'.

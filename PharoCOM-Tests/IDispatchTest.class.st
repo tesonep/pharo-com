@@ -9,7 +9,7 @@ IDispatchTest >> testAccessingBoolProperties [
 	| obj value |
 	COMLib uniqueInstance initLibrary.
 
-	obj := COMDispatchInstance createInstanceOf: '{0002DF01-0000-0000-C000-000000000046}' "InternetExplorer".
+	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 
 	value := obj propertyNamed: #Resizable.
 	self assert: value equals: true.
@@ -32,7 +32,7 @@ IDispatchTest >> testAccessingInt32Properties [
 	| obj value |
 	COMLib uniqueInstance initLibrary.
 
-	obj := COMDispatchInstance createInstanceOf: '{0002DF01-0000-0000-C000-000000000046}' "InternetExplorer".
+	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 	
 	obj propertyNamed: #Left put: 250.	
 	value := obj propertyNamed: #Left.
@@ -47,7 +47,7 @@ IDispatchTest >> testCallingVoidFunction [
 	| obj |
 	
 	COMLib uniqueInstance initLibrary.
-	obj := COMDispatchInstance createInstanceOf: '{0002DF01-0000-0000-C000-000000000046}' "InternetExplorer".
+	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 
 	obj dispatch: #Quit.
 ]

@@ -21,9 +21,7 @@ Class {
 		'KEY_WOW64_64KEY',
 		'KEY_WRITE',
 		'LPBYTE',
-		'LPCTSTR',
 		'LPDWORD',
-		'LPTSTR',
 		'NULL_LPDWORD',
 		'PFILETIME',
 		'PHKEY',
@@ -71,9 +69,6 @@ WinRegTypes class >> initialize [
 	HKEY := 'void*'.
 	PHKEY := FFIExternalValueHolder ofType: HKEY.
 	REGSAM := DWORD.
-
-	LPTSTR := 'Win32WideString'.
-	LPCTSTR := 'Win32WideString'.
 
 	LPBYTE := 'void*'.
 	LPDWORD := FFIExternalValueHolder ofType: DWORD.
