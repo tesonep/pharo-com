@@ -43,7 +43,7 @@ WinRegEntry >> ensureOpen [
 	
 	returnCode := AdvApi32Lib uniqueInstance ffiRegOpenKeyEx: parent handle subkey: subKeyUnicode options: 0 samDesired: desiredAccessLevel result: phkey.
 	
-	(returnCode ~= 0) ifTrue:[ Kernel32Lib uniqueInstance reportError: returnCode].
+	self reportErrorIfNoZero: returnCode.
 	
 	self handle: phkey value.
 ]

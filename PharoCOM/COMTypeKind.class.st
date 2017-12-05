@@ -22,7 +22,7 @@ COMTypeKind class >> coClass [
 
 { #category : #'as yet unclassified' }
 COMTypeKind class >> dispatch [ 
-	^ TKIND_DISPATCH 
+	^ TKIND_DISPATCH
 ]
 
 { #category : #'as yet unclassified' }

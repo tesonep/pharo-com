@@ -17,12 +17,12 @@ COMInvokeKind class >> Function [
 
 { #category : #'as yet unclassified' }
 COMInvokeKind class >> Get [
-	^ INVOKE_PROPERTYGET 
+	^ INVOKE_PROPERTYGET
 ]
 
 { #category : #'as yet unclassified' }
 COMInvokeKind class >> Put [
-	^ INVOKE_PROPERTYPUT 
+	^ INVOKE_PROPERTYPUT
 ]
 
 { #category : #'as yet unclassified' }

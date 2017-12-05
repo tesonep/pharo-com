@@ -1,7 +1,9 @@
 Class {
 	#name : #Win32WideString,
 	#superclass : #FFIExternalObject,
-	#category : 'PharoWin32-Objects'
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait + TWinErrorChecker',
+	#category : #'PharoWin32-Objects'
 }
 
 { #category : #'instance creation' }
@@ -25,8 +27,8 @@ Win32WideString class >> fromString: aString [
 		output: wideString
 		outputLen: wideString byteSize.
 
-	r = 0
-		ifTrue: [ Kernel32Lib uniqueInstance reportError: r ].
+	self reportErrorIfZero: r.
+	
 	^ wideString
 ]
 
@@ -51,9 +53,9 @@ Win32WideString >> asString [
 		inputLen: self size + 1
 		output: out
 		outputLen: out size.
+		
+	self reportErrorIfZero: r.
 
-	r = 0
-		ifTrue: [ Kernel32Lib uniqueInstance reportError: r ].
 
 	^ (out first: r - 1) utf8Decoded
 ]

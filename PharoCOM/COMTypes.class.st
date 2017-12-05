@@ -57,5 +57,4 @@ COMTypes class >> initialize [
 	LPBSTR := #'void**'.
 	
 	SCODE := LONG.
-
 ]

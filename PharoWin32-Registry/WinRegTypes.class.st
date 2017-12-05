@@ -4,6 +4,8 @@ I am a SharedPool with all the FFI types used in the registry functions.
 Class {
 	#name : #WinRegTypes,
 	#superclass : #SharedPool,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#classVars : [
 		'HKEY',
 		'KEY_ALL_ACCESS',

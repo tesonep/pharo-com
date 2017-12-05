@@ -50,7 +50,7 @@ COMTypeDesc >> content: anObject [
 
 { #category : #testing }
 COMTypeDesc >> isPointerType [
-	^ Win32Variant isPointer: self vt 
+	^ Win32Variant isPointer: self vt
 ]
 
 { #category : #types }

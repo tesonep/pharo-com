@@ -12,5 +12,4 @@ Win32VariantInt32 >> readFrom: aVariant [
 { #category : #accessing }
 Win32VariantInt32 >> write: aValue to: aVariant [
 	aVariant rawData signedLongAt: 1 put: aValue.
-
 ]

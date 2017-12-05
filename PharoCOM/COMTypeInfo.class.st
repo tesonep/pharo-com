@@ -23,7 +23,7 @@ COMTypeInfo >> calculateMethodAt: anInteger [
 	pointer autoRelease.
 	r := self ffiGetFuncDesc: pointer at: (anInteger - 1).
 	
-	(r ~= 0) ifTrue:[ self reportError: r ].
+	self reportErrorIfNoZero: r.
 	
 	[	
 		funDesc := COMFuncDesc fromHandle: pointer.
@@ -51,7 +51,6 @@ COMTypeInfo >> calculateProperties [
 	
 	propNames := ((self methods select: #isProperty) collect: #name) asSet.
 	^ propNames collect: [ :e | COMProperty named: e on: self ]
-	
 ]
 
 { #category : #querying }
@@ -148,11 +147,11 @@ COMTypeInfo >> getImplementedTypeIndex: index [
 	pointer autoRelease.
 
 	ret := self ffiGetRefTypeOfImplTypeIndex: index pointer: pointer.
-	(ret ~= 0) ifTrue:[ self reportError: ret ].
+	self reportErrorIfNoZero: ret.
 	
 	href := pointer signedLongAt: 1.
 	ret := self ffiGetRefTypeInfo: href pointer: pointer.
-	(ret ~= 0) ifTrue:[ self reportError: ret ].
+	self reportErrorIfNoZero: ret.
 
 	^ self class fromHandle: (pointer pointerAt:1).
 ]
@@ -168,7 +167,7 @@ COMTypeInfo >> getNamesOfMemberID: memberId maxNames: maxNames [
 	holder autoRelease.
 
 	return := self ffiGetNamesOf: memberId into: arrayStrings size: maxNames count: holder.
-	(return ~= 0) ifTrue:[self reportError: return].
+	self reportErrorIfNoZero: return.
 	
 	cant := holder unsignedLongAt: 1.
 	wideStrings := OrderedCollection new.
@@ -216,9 +215,9 @@ COMTypeInfo >> typeAttributes [
 
 	returnCode := self ffiGetTypeAttr: pointer.
 	
-	(returnCode ~= 0) ifTrue: [ self reportError: returnCode ].
+	self reportErrorIfNoZero: returnCode.
+	
 	^ COMTypeAttributes fromHandle: pointer.
-
 ]
 
 { #category : #querying }

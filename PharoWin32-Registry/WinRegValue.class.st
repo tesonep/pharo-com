@@ -5,6 +5,8 @@ As I have many different types, my data is only an array of bytes and it is inte
 Class {
 	#name : #WinRegValue,
 	#superclass : #Object,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#instVars : [
 		'entry',
 		'name',

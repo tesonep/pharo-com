@@ -1,10 +1,12 @@
 Class {
 	#name : #User32Lib,
 	#superclass : #FFILibrary,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#pools : [
 		'Win32Types'
 	],
-	#category : 'PharoWin32'
+	#category : #PharoWin32
 }
 
 { #category : #'ffi-calls' }
@@ -37,10 +39,10 @@ User32Lib >> messageBoxText:text caption:caption type: type [
 
 { #category : #initialization }
 User32Lib >> setFocus: aHWND [
-	| r |
-	r := self ffiSetFocus: aHWND.
-	r = 0
-		ifTrue: [ Kernel32Lib uniqueInstance reportError: r ]
+	| result |
+	result := self ffiSetFocus: aHWND.
+
+	self reportErrorIfZero: result.
 ]
 
 { #category : #'as yet unclassified' }

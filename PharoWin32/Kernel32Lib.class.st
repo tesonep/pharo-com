@@ -1,10 +1,12 @@
 Class {
 	#name : #Kernel32Lib,
 	#superclass : #FFILibrary,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#pools : [
 		'Win32Types'
 	],
-	#category : 'PharoWin32'
+	#category : #PharoWin32
 }
 
 { #category : #'as yet unclassified' }
@@ -30,7 +32,7 @@ Kernel32Lib >> lastError [
 	^ self ffiCall: #(DWORD GetLastError())
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'reporting errors' }
 Kernel32Lib >> reportError: returnCode [
 	| lastError |
 	lastError := self lastError.

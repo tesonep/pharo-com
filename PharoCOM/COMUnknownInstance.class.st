@@ -1,10 +1,12 @@
 Class {
 	#name : #COMUnknownInstance,
 	#superclass : #FFIExternalVTableObject,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait + TWinErrorChecker',
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM'
+	#category : #PharoCOM
 }
 
 { #category : #'instance creation' }
@@ -50,20 +52,13 @@ COMUnknownInstance >> queryInterface: aGUID returnClass: aClass [
 	
 	ret := self ffiQueryInterface: aGUID into: holder.
 	
-	(ret ~= 0) ifTrue:[ self reportError: ret].
+	self reportErrorIfNoZero: ret.
 	
 	^ (aClass fromHandle: holder).
-
 ]
 
 { #category : #'reference counting' }
 COMUnknownInstance >> release [
 
 	^ self ffiCall: #(ULONG Release(self)) at: 3
-]
-
-{ #category : #querying }
-COMUnknownInstance >> reportError: returnValue [	
-	Kernel32Lib uniqueInstance reportError: returnValue.
-
 ]

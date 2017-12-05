@@ -5,6 +5,8 @@ I implement the common behaviour of the entries.
 Class {
 	#name : #WinAbstractRegEntry,
 	#superclass : #Object,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#instVars : [
 		'handle',
 		'values',
@@ -112,8 +114,7 @@ WinAbstractRegEntry >> queryInfo [
 		securityDescriptorSizeHolder: NULL_LPDWORD
 		lastWriteTimeHolder: nil.
 
-	returnCode ~= 0
-		ifTrue: [ Kernel32Lib uniqueInstance reportError: returnCode ].
+	self reportErrorIfNoZero: returnCode.
 	
 	subKeyCount := subKeyCountHolder value.
 	subKeyNameMax := subKeyNameMaxHolder value.
@@ -143,7 +144,7 @@ WinAbstractRegEntry >> querySubKeyIndex: index [
 		classLengthHolder:  NULL_LPDWORD
 		lastWriteTime: nil.
 		
-	(returnCode ~= 0) ifTrue:[ Kernel32Lib uniqueInstance reportError: returnCode ].
+	self reportErrorIfNoZero: returnCode.
 		
 	^ WinRegEntry new
 		parent: self;
@@ -175,7 +176,7 @@ WinAbstractRegEntry >> queryValueIndex: index [
 		dataHolder: valueData
 		dataLengthHolder: valueDataLength.
 		
-	(returnCode ~= 0) ifTrue:[ Kernel32Lib uniqueInstance reportError: returnCode ].
+	self reportErrorIfNoZero: returnCode.
 	
 	^ WinRegValue new 
 		name: valueName asString;

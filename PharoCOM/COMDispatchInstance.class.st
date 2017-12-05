@@ -21,7 +21,7 @@ COMDispatchInstance class >> createInstanceOf: clsidString [
 	pointer autoRelease.
 
 	ret := COMLib uniqueInstance ffiCoCreateInstance:pointer of:clsid as: refiid.
-	(ret ~= 0) ifTrue:[ self reportError: ret].
+	self reportErrorIfNoZero: ret.
 	
 	^ self fromHandle: (pointer pointerAt: 1).
 ]
@@ -42,7 +42,6 @@ COMDispatchInstance >> dispatch: aFunctionName withArguments: arguments [
 COMDispatchInstance >> ffiGetTypeInfo: iTInfo lcid: lcid into: holder [
 
 	^ self ffiCall: #(HRESULT GetTypeInfo(self, UINT iTInfo, LCID lcid, void** holder)) at: 5.	
-
 
 ]
 
@@ -90,11 +89,10 @@ COMDispatchInstance >> getTypeInfo: iTInfo lcid: lcid [
 	
 	return := self ffiGetTypeInfo: iTInfo lcid: lcid into: pointer.
 	
-	(return ~= 0) ifTrue:[ self reportError: return].
-	
+	self reportErrorIfNoZero: return.
+
 	typeInfo := COMTypeInfo fromHandle:  pointer.
 	^ typeInfo.
-
 ]
 
 { #category : #querying }
@@ -106,10 +104,9 @@ COMDispatchInstance >> getTypeInfoCount [
 	
 	return := self ffiGetTypeInfoCount: pointer.
 	
-	(return ~= 0) ifTrue:[ self reportError: return].
+	self reportErrorIfNoZero: return.
 	
 	^ pointer unsignedLongAt: 1.
-
 ]
 
 { #category : #properties }

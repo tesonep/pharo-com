@@ -1,6 +1,8 @@
 Class {
 	#name : #COMMethod,
 	#superclass : #Object,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#instVars : [
 		'memberId',
 		'name',
@@ -14,7 +16,7 @@ Class {
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM'
+	#category : #PharoCOM
 }
 
 { #category : #'instance creation' }
@@ -23,7 +25,6 @@ COMMethod class >> fromFuncDesc: aFuncDesc in: typeInfo [
 		from: aFuncDesc in: typeInfo;
 		yourself.
 	
-
 ]
 
 { #category : #invoking }
@@ -83,7 +84,6 @@ COMMethod >> from: aFuncDesc in: aTypeInfo [
 	] ifFalse: [ 
 		self optionalParameters: #().	
 	]
-		
 ]
 
 { #category : #accessing }
@@ -120,8 +120,7 @@ COMMethod >> invokeOn: anObject withArgs: arguments [
 		exceptionInfo: exceptionInfo
 		argumentError: argumentError.
 
-	result ~= 0
-		ifTrue: [ self reportError: result ].
+	self reportErrorIfNoZero: result.
 
 	^ returnType isVoid
 		ifTrue: [ ^ anObject ]
@@ -218,12 +217,6 @@ COMMethod >> printOn: aStream [
 				nextPut: Character space;
 				nextPutAll: self invokeKind asString;
 				nextPut: $).
-]
-
-{ #category : #'error handling' }
-COMMethod >> reportError: returnValue [	
-	Kernel32Lib uniqueInstance reportError: returnValue.
-
 ]
 
 { #category : #accessing }

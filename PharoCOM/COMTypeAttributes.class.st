@@ -53,7 +53,6 @@ COMTypeAttributes class >> fieldsDesc [
     TYPEDESC tdescAlias;
     IDLDESC idldescType;	
 	)
-
 ]
 
 { #category : #'accessing structure variables' }
