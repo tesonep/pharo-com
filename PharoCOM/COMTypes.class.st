@@ -17,6 +17,7 @@ Class {
 		'LPPARAMDESCEX',
 		'MEMBERID',
 		'PARAMDESC',
+		'REFGUID',
 		'SCODE',
 		'TYPEATTR',
 		'TYPEDESC',
@@ -24,9 +25,9 @@ Class {
 		'VARIANT'
 	],
 	#pools : [
-		'Win32Types'
+		'WinRegTypes'
 	],
-	#category : 'PharoCOM-Types'
+	#category : #'PharoCOM-Types'
 }
 
 { #category : #'class initialization' }
@@ -53,8 +54,10 @@ COMTypes class >> initialize [
 	DISPPARAMS := #COMDispParams.
 	EXCEPINFO := #COMExcepInfo.
 
-	BSTR := #'void*'.
-	LPBSTR := #'void**'.
+	BSTR := #'BSTRString'.
+	LPBSTR := POINTER_HOLDER.
+	
+	REFGUID := #'void*'.
 	
 	SCODE := LONG.
 ]

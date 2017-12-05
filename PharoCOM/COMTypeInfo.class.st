@@ -7,12 +7,13 @@ Class {
 		'guid',
 		'typeKind',
 		'typeFlags',
-		'implementedTypesNumber'
+		'implementedTypesNumber',
+		'name'
 	],
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM'
+	#category : #'PharoCOM-TypeLibraries'
 }
 
 { #category : #'calculating members' }
@@ -62,6 +63,11 @@ COMTypeInfo >> dispatchInterface [
 { #category : #'ffi-calls' }
 COMTypeInfo >> ffiAddressOfMember: memid invKind: invKind holder: ptr [
 	^ self ffiCall: #(HRESULT AddressOfMember(self, MEMBERID memid, INVOKEKIND invKind, void** ptr)) at: 16
+]
+
+{ #category : #'ffi-calls' }
+COMTypeInfo >> ffiGetDocumentation: memid name: pBstrName docs: pBstrDocString helpContext: pdwHelpContext helpFile: pBstrHelpFile [
+	^ self ffiCall: #(HRESULT GetDocumentation #(self , MEMBERID memid , LPBSTR pBstrName , LPBSTR pBstrDocString , LPDWORD pdwHelpContext , LPBSTR pBstrHelpFile)) at: 13
 ]
 
 { #category : #'ffi-calls' }
@@ -120,6 +126,35 @@ COMTypeInfo >> ffiReleaseFuncDesc: funcDesc [
 { #category : #'ffi-calls' }
 COMTypeInfo >> ffiReleaseTypeAttr: typeattr [
 	^ self ffiCall: #(void ReleaseTypeAttr(self, TYPEATTR* typeattr)) at: 20
+]
+
+{ #category : #private }
+COMTypeInfo >> fillAll [
+	self
+		fillName;
+		fillTypeAttributes;
+		calculateMethods;
+		calculateProperties
+]
+
+{ #category : #private }
+COMTypeInfo >> fillName [
+	| nameHolder returnCode bstrName |
+	nameHolder := POINTER_HOLDER new.
+	
+	returnCode := self
+		ffiGetDocumentation: -1
+		name: nameHolder
+		docs: FFIExternalObject null
+		helpContext: FFIExternalObject null
+		helpFile: FFIExternalObject null.
+		
+	self reportErrorIfNoZero: returnCode.
+	
+	bstrName := BSTRString fromHandle: nameHolder value.
+	name := bstrName asString.
+	bstrName finalize.
+	
 ]
 
 { #category : #private }
@@ -199,6 +234,20 @@ COMTypeInfo >> implementedTypesNumber [
 { #category : #querying }
 COMTypeInfo >> methods [
 	^ methods ifNil: [ methods := self calculateMethods ]
+]
+
+{ #category : #accessing }
+COMTypeInfo >> name [
+	^ name	ifNil:[ self fillName. name ]
+]
+
+{ #category : #printing }
+COMTypeInfo >> printOn: aStream [
+	aStream nextPutAll: self class name;
+	nextPut: $(;
+	nextPutAll: (name ifNil:[handle]) asString;
+	nextPutAll: (typeKind ifNil:[''] ifNotNil:[' ' , typeKind item asString]);
+	nextPut: $)
 ]
 
 { #category : #querying }

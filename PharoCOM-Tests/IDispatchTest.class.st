@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 IDispatchTest >> testAccessingBoolProperties [
 	| obj value |
-	COMLib uniqueInstance initLibrary.
+	Ole32Lib uniqueInstance initLibrary.
 
 	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 
@@ -30,7 +30,7 @@ IDispatchTest >> testAccessingBoolProperties [
 { #category : #tests }
 IDispatchTest >> testAccessingInt32Properties [
 	| obj value |
-	COMLib uniqueInstance initLibrary.
+	Ole32Lib uniqueInstance initLibrary.
 
 	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 	
@@ -46,7 +46,7 @@ IDispatchTest >> testAccessingInt32Properties [
 IDispatchTest >> testCallingVoidFunction [
 	| obj |
 	
-	COMLib uniqueInstance initLibrary.
+	Ole32Lib uniqueInstance initLibrary.
 	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 
 	obj dispatch: #Quit.

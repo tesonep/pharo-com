@@ -30,7 +30,7 @@ COMDispatchInstance class >> createInstanceOf: clsidString [
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.
 
-	ret := COMLib uniqueInstance ffiCoCreateInstance:pointer of:clsid as: refiid.
+	ret := Ole32Lib uniqueInstance ffiCoCreateInstance:pointer of:clsid as: refiid.
 	self reportErrorIfNoZero: ret.
 	
 	^ self fromHandle: (pointer pointerAt: 1).
