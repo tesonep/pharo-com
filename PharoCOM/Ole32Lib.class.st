@@ -44,6 +44,5 @@ Ole32Lib >> initLibrary [
 
 { #category : #'accessing platform' }
 Ole32Lib >> win32ModuleName [
-	"While this is not a 'libc' properly, msvcrt has the functions we are defining here"
 	^ 'Ole32.dll'
 ]

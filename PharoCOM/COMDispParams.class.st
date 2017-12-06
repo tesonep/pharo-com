@@ -110,6 +110,13 @@ COMDispParams >> cNamedArgs: anObject [
 	handle unsignedLongAt: OFFSET_CNAMEDARGS put: anObject
 ]
 
+{ #category : #Accessing }
+COMDispParams >> clearArguments [
+	(handle pointerAt: OFFSET_ARGS) isNull ifTrue:[^self].
+	
+	self argsArray do: [ :e | e clear ]
+]
+
 { #category : #'accessing structure variables' }
 COMDispParams >> namedArgs [
 	"This method was automatically generated"

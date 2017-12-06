@@ -1,6 +1,8 @@
 Class {
 	#name : #Win32Variant,
 	#superclass : #FFIExternalStructure,
+	#traits : 'TWinErrorChecker',
+	#classTraits : 'TWinErrorChecker classTrait',
 	#classVars : [
 		'OFFSET_DATA',
 		'OFFSET_VT',
@@ -13,7 +15,7 @@ Class {
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM-Variant'
+	#category : #'PharoCOM-Variant'
 }
 
 { #category : #'as yet unclassified' }
@@ -40,6 +42,7 @@ Win32Variant class >> initializeTypeMapping [
 	"	self initializeTypeMapping. "
 
 	PointerType := 26.
+
 	TypeMapping := ({
 		(Win32VariantUnimplementedType new: #NULL as: 1).
 		(Win32VariantUnimplementedType new: #int16 as: 2).
@@ -48,7 +51,7 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantUnimplementedType new: #double as: 5).
 		(Win32VariantUnimplementedType new: #CURRENCY as: 6).
 		(Win32VariantUnimplementedType new: #DATE as: 7).
-		(Win32VariantUnimplementedType new: #Win32WideString as: 8).
+		(Win32VariantBSTRString new: #BSTRString as: 8).
 		(Win32VariantUnimplementedType new: #COMDispatchInstance as: 9).
 		(Win32VariantUnimplementedType new: #ERROR as: 10).
 		(Win32VariantBool new: #BOOL as: 11).
@@ -87,6 +90,14 @@ Win32Variant class >> typeFor: anInteger [
 ]
 
 { #category : #accessing }
+Win32Variant >> clear [
+	" Clears the variant after being used in COM calls"
+	| returnCode |
+	returnCode := OleAut32Lib uniqueInstance ffiVariantClear: self getHandleAsExternalAddress .
+	self reportErrorIfNoZero: returnCode.
+]
+
+{ #category : #accessing }
 Win32Variant >> contentType [
 	^ self class typeFor: self vt.
 ]
@@ -94,7 +105,7 @@ Win32Variant >> contentType [
 { #category : #'accessing structure variables' }
 Win32Variant >> data [
 	"This method was automatically generated"
-	^(FFITypeArray ofType: FFIUInt8 size: 8) fromHandle: (handle copyFrom: OFFSET_DATA to: OFFSET_DATA + 7)
+	^(FFITypeArray ofType: #FFIUInt8 size: 8) fromHandle: (handle copyFrom: OFFSET_DATA to: OFFSET_DATA + 7)
 ]
 
 { #category : #'accessing structure variables' }
@@ -103,11 +114,28 @@ Win32Variant >> data: anObject [
 	handle replaceFrom: OFFSET_DATA to: OFFSET_DATA + 7 with: anObject getHandle startingAt: 1
 ]
 
+{ #category : #'accessing - private' }
+Win32Variant >> getHandleAsExternalAddress [
+	"This ugly ugly method is here because the FFI primitive only accepts ExternalAddress as pointers, FFIExternalStructureReferenceHandle that is polymorphic is not accepted."
+
+	(handle isKindOf: FFIExternalStructureReferenceHandle)
+		ifTrue: [ ^ handle getHandle + (handle instVarNamed: #startOffset) ].
+	^ handle
+]
+
+{ #category : #initialization }
+Win32Variant >> init [
+	" Inits the variant to be used in COM calls"
+	| returnCode |
+	returnCode := OleAut32Lib uniqueInstance ffiVariantInit: self getHandleAsExternalAddress.
+	self reportErrorIfNoZero: returnCode.
+]
+
 { #category : #printing }
 Win32Variant >> printOn: aStream [
 	aStream nextPutAll: self class name; nextPutAll: ' ( '.
 	aStream nextPutAll: self contentType typeName ; nextPutAll: '  '.
-	aStream nextPutAll: self read asString; nextPutAll: ' )'.
+	aStream nextPutAll: self read printString; nextPutAll: ' )'.
 ]
 
 { #category : #accessing }

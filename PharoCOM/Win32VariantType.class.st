@@ -28,7 +28,7 @@ Win32VariantType >> isVoid [
 
 { #category : #accessing }
 Win32VariantType >> readFrom: aVariant [
-	self subclassResponsibility
+	^ self subclassResponsibility 
 ]
 
 { #category : #accessing }
@@ -53,5 +53,5 @@ Win32VariantType >> typeNumber: anObject [
 
 { #category : #accessing }
 Win32VariantType >> write: aValue to: aVariant [
-	^ self subclassResponsibility
+	^ self subclassResponsibility 
 ]

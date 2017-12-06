@@ -14,6 +14,18 @@ BSTRString class >> finalizeResourceData: handle [
 	(self fromHandle: handle) finalize.
 ]
 
+{ #category : #'instance creation' }
+BSTRString class >> fromString: aString [
+	| wstr handle |
+	wstr := Win32WideString fromString: aString.
+	handle := (OleAut32Lib uniqueInstance ffiSysAllocString: wstr) getHandle.
+
+	handle isNull
+		ifTrue: [ Kernel32Lib uniqueInstance reportError: 0 ].
+		
+	^ self fromHandle: handle
+]
+
 { #category : #converting }
 BSTRString >> asString [
 	^ (Win32WideString fromHandle: handle) asString.

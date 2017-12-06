@@ -50,6 +50,7 @@ COMMethod >> fillArguments: arguments byTypeOn: dispparams [
 	arguments doWithIndex: [ :value :idx | |type variant|
 		type := self parameterTypes at: idx.
 		variant := dispparams argsArray at: idx.
+		variant init.
 		variant vt: type typeNumber.
 		type write: value to: variant 
 	]
@@ -98,7 +99,7 @@ COMMethod >> invokeKind: anObject [
 
 { #category : #invoking }
 COMMethod >> invokeOn: anObject withArgs: arguments [
-	| result returnedValue exceptionInfo argumentError |
+	| result returnedValue exceptionInfo argumentError rtnObject params |
 	argumentError := ExternalAddress allocate: Smalltalk wordSize.
 
 	argumentError autoRelease.
@@ -110,21 +111,29 @@ COMMethod >> invokeOn: anObject withArgs: arguments [
 	exceptionInfo := COMExcepInfo externalNew.
 	exceptionInfo autoRelease.
 
+	params := self buildFunctionArguments: arguments.
+	params clearArguments.
+
 	result := anObject
 		ffiInvokeMemberId: self memberId
 		refiid: GUID nullGuid
 		lcid: LOCALE_USER_DEFAULT
 		flags: self invokeKind value
-		params: (self buildFunctionArguments: arguments)
+		params: params
 		resultHolder: returnedValue
 		exceptionInfo: exceptionInfo
 		argumentError: argumentError.
 
 	self reportErrorIfNoZero: result.
 
-	^ returnType isVoid
-		ifTrue: [ ^ anObject ]
-		ifFalse: [ returnedValue read ]
+	returnType isVoid 
+		ifTrue: [rtnObject := anObject ] 
+		ifFalse: [
+			rtnObject :=  returnedValue read.
+			returnedValue clear
+		].
+
+	^ rtnObject
 ]
 
 { #category : #testing }

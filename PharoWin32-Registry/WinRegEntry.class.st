@@ -48,6 +48,11 @@ WinRegEntry >> ensureOpen [
 	self handle: phkey value.
 ]
 
+{ #category : #accessing }
+WinRegEntry >> fullKeyName [
+	^ self parent fullKeyName , '\' , subKey
+]
+
 { #category : #initialization }
 WinRegEntry >> initialize [
 	handle := ExternalAddress new.
@@ -56,7 +61,7 @@ WinRegEntry >> initialize [
 
 { #category : #accessing }
 WinRegEntry >> keyName [
-	^ self parent keyName , '\' , subKey
+	^ subKey
 ]
 
 { #category : #accessing }

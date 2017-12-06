@@ -14,7 +14,8 @@ Class {
 		'data'
 	],
 	#classVars : [
-		'TypeMap'
+		'TypeMap',
+		'TypeNames'
 	],
 	#pools : [
 		'WinRegTypes'
@@ -37,6 +38,21 @@ WinRegValue class >> initialize [
 #define REG_RESOURCE_REQUIREMENTS_LIST ( 10 )
 #define REG_QWORD                   ( 11 )  // 64-bit number
 "
+
+TypeNames := { 
+ 	0 -> 'REG_NONE'.
+	1 -> 'REG_SZ'.
+	2 -> 'REG_EXPAND_SZ'.
+	3 -> 'REG_BINARY'.
+	4 -> 'REG_DWORD'.
+	5 -> 'REG_DWORD_BIG_ENDIAN'.
+	6 -> 'REG_LINK'.
+	7 -> 'REG_MULTI_SZ'.
+	8 -> 'REG_RESOURCE_LIST'.
+	9 -> 'REG_FULL_RESOURCE_DESCRIPTOR'.
+	10 -> 'REG_RESOURCE_REQUIREMENTS_LIST'.
+	11 -> 'REG_QWORD'.
+} asDictionary.
 
 TypeMap := {  
 	 0 -> #convertBytes:.
@@ -134,6 +150,11 @@ WinRegValue >> type [
 { #category : #accessing }
 WinRegValue >> type: anObject [
 	type := anObject
+]
+
+{ #category : #accessing }
+WinRegValue >> typeName [
+	^ TypeNames at: type
 ]
 
 { #category : #evaluating }

@@ -41,6 +41,11 @@ WinAbstractRegEntry >> defaultValue [
 	^ self valueNamed: ''
 ]
 
+{ #category : #displaying }
+WinAbstractRegEntry >> displayString [
+	^ self keyName
+]
+
 { #category : #'private-open-closing' }
 WinAbstractRegEntry >> ensureClose [
 	self subclassResponsibility
@@ -76,6 +81,11 @@ WinAbstractRegEntry >> fillValues [
 ]
 
 { #category : #accessing }
+WinAbstractRegEntry >> fullKeyName [
+	^ self subclassResponsibility 
+]
+
+{ #category : #accessing }
 WinAbstractRegEntry >> handle [
 	^ handle
 ]
@@ -85,12 +95,17 @@ WinAbstractRegEntry >> handle: anObject [
 	handle := anObject
 ]
 
+{ #category : #accessing }
+WinAbstractRegEntry >> keyName [
+	^ self subclassResponsibility 
+]
+
 { #category : #printing }
 WinAbstractRegEntry >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
 		nextPut: $(;
-		nextPutAll: self keyName;
+		nextPutAll: self fullKeyName;
 		nextPut: $)
 ]
 

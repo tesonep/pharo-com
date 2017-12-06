@@ -74,6 +74,11 @@ WinRegRootEntry >> ensureOpen [
 ]
 
 { #category : #accessing }
+WinRegRootEntry >> fullKeyName [
+	^ rootName
+]
+
+{ #category : #accessing }
 WinRegRootEntry >> handle [
 	^ super handle asExternalPointer
 ]
