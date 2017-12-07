@@ -52,11 +52,11 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantUnimplementedType new: #CURRENCY as: 6).
 		(Win32VariantUnimplementedType new: #DATE as: 7).
 		(Win32VariantBSTRString new: #BSTRString as: 8).
-		(Win32VariantUnimplementedType new: #COMDispatchInstance as: 9).
+		(Win32VariantCOMInstance new: #COMDispatchInstance as: 9).
 		(Win32VariantUnimplementedType new: #ERROR as: 10).
 		(Win32VariantBool new: #BOOL as: 11).
 		(Win32VariantUnimplementedType new: #Win32Variant as: 12).
-		(Win32VariantUnimplementedType new: #COMUnknownInstance as: 13).
+		(Win32VariantCOMInstance new: #COMUnknownInstance as: 13).
 		(Win32VariantUnimplementedType new: #DECIMAL as: 14).
 		(Win32VariantUnimplementedType new: #byte as: 16).
 		(Win32VariantUnimplementedType new: #ubyte as: 17).

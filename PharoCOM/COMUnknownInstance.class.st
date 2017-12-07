@@ -28,6 +28,12 @@ COMUnknownInstance class >> fromHandle: aHandle [
 
 { #category : #'reference counting' }
 COMUnknownInstance >> addRef [
+	handle isNull ifTrue:[ ^ self ].
+	^ self ffiAddRef.
+]
+
+{ #category : #'reference counting' }
+COMUnknownInstance >> ffiAddRef [
 
 	^ self ffiCall: #(ULONG AddRef(self)) at: 2
 ]

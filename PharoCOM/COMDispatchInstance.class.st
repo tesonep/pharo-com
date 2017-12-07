@@ -119,6 +119,13 @@ COMDispatchInstance >> getTypeInfoCount [
 	^ pointer unsignedLongAt: 1.
 ]
 
+{ #category : #'gt-inspector-extension' }
+COMDispatchInstance >> gtInspectorPage: aComposer [
+	<gtInspectorPresentationOrder: 1>  
+
+	COMDispatchInstanceInspector new buildPresentationOn: aComposer for: self.
+]
+
 { #category : #properties }
 COMDispatchInstance >> propertyNamed: aPropName [ 
 	| prop |

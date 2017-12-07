@@ -107,12 +107,12 @@ COMMethod >> invokeOn: anObject withArgs: arguments [
 
 	returnedValue := Win32Variant externalNew.
 	returnedValue autoRelease.
+	returnedValue init.
 
 	exceptionInfo := COMExcepInfo externalNew.
 	exceptionInfo autoRelease.
 
 	params := self buildFunctionArguments: arguments.
-	params clearArguments.
 
 	result := anObject
 		ffiInvokeMemberId: self memberId
@@ -125,6 +125,8 @@ COMMethod >> invokeOn: anObject withArgs: arguments [
 		argumentError: argumentError.
 
 	self reportErrorIfNoZero: result.
+
+	params clearArguments.
 
 	returnType isVoid 
 		ifTrue: [rtnObject := anObject ] 
