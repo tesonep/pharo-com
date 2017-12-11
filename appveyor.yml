@@ -7,12 +7,10 @@ environment:
   SCI_RUN: /cygdrive/c/smalltalkCI-master/bin/smalltalkci
   matrix:
     # Currently, only Squeak and Pharo images are supported on AppVeyor.
-    - SMALLTALK: Pharo-6.1
     - SMALLTALK: Pharo-7.0
 
 platform:
   - x86
-  - x64
 
 install:
   - '%CYG_EXE% -dgnqNO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P unzip'
