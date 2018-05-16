@@ -11,6 +11,7 @@ Class {
 		'HWND',
 		'LOCALE_USER_DEFAULT',
 		'LONG',
+		'LPBYTE',
 		'LPCLSID',
 		'LPCSTR',
 		'LPCTSTR',
@@ -47,6 +48,7 @@ Win32Types class >> initialize [
 	
 	HRESULT := #ulong.
 	LPVOID := #'void*'.
+	LPBYTE := #'byte*'.
 	LPCSTR := #String.
 	LPCVOID := #'void*'.
 	LPSTR := LPCSTR.
