@@ -21,7 +21,9 @@ BaselineOfPharoWin32 >> baseline: spec [
 			package: #'PharoCOM-Tests' with: [ spec requires: #('PharoCOM') ].
 		
 		spec 
-			group: 'default' with: #('core' 'tests');
-			group: 'core' with: #('PharoCOM');		
+			group: 'core' with: #('PharoCOM');
+			group: 'registry' with: #('PharoWin32-Registry' 'core');
+			group: 'com' with: #('PharoCOM' 'core' 'registry');
+			group: 'default' with: #('com' 'tests');
 			group: 'tests' with: #('PharoWin32-Tests' 'PharoCOM-Tests' 'PharoWin32-Registry-Tests') ]
 ]
