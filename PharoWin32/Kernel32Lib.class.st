@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+Kernel32Lib >> ffiCloseHandler: hObject [
+	self ffiCall: #(BOOL CloseHandle(HANDLE hObject))
+]
+
+{ #category : #'as yet unclassified' }
 Kernel32Lib >> ffiFormatMessageFlags: dwFlags source: lpSource messageId: dwMessageId languageId: dwLanguageId string: lpBuffer stringLen: nSize varArgs: arguments [
 	^ self ffiCall: #(DWORD FormatMessageW( DWORD dwFlags ,  LPCVOID lpSource ,  DWORD dwMessageId ,  DWORD dwLanguageId ,  LPTSTR lpBuffer ,  DWORD nSize ,  void* arguments))
 ]

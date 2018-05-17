@@ -17,6 +17,7 @@ Class {
 		'LPCTSTR',
 		'LPCVOID',
 		'LPCWCH',
+		'LPDWORD',
 		'LPOLESTR',
 		'LPSTR',
 		'LPTSTR',
@@ -52,6 +53,8 @@ Win32Types class >> initialize [
 	LPCSTR := #String.
 	LPCVOID := #'void*'.
 	LPSTR := LPCSTR.
+	LPDWORD := FFIExternalValueHolder ofType: 'ulong'.
+
 	
 	LPTSTR := 'Win32WideString'.
 	LPCTSTR := 'Win32WideString'.	
@@ -61,7 +64,7 @@ Win32Types class >> initialize [
 	HWND := LONG.
 	HANDLE := #'void*'.
 	UINT := #uint.
-	
+		
 	UINT_PTR := FFIExternalValueHolder ofType: 'uint'.
 	ULONG_PTR := FFIExternalValueHolder ofType: 'ulong'.
 	POINTER_HOLDER := FFIExternalValueHolder ofType: 'void*'.
