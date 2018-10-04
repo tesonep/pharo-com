@@ -20,6 +20,12 @@ Kernel32Lib >> ffiFormatMessageFlags: dwFlags source: lpSource messageId: dwMess
 ]
 
 { #category : #'as yet unclassified' }
+Kernel32Lib >> ffiGetEnvironmentVariable: lpName into: lpBuffer size: nSize [
+
+	^ self ffiCall: #(DWORD GetEnvironmentVariableW(LPCTSTR lpName, LPTSTR  lpBuffer, DWORD nSize))
+]
+
+{ #category : #'as yet unclassified' }
 Kernel32Lib >> ffiGetProcessHeap [
 	^ self ffiCall: #(HANDLE GetProcessHeap())
 ]
@@ -45,6 +51,23 @@ Kernel32Lib >> ffiWideCharacterToMultiByteCodepage: codepage flags: flags input:
     0,
     0
  ))
+]
+
+{ #category : #'as yet unclassified' }
+Kernel32Lib >> getEnvironmentVariable: aName [
+	| name buffer return |
+
+	name := aName asWin32WideString.
+	buffer := Win32WideString new: 500.
+
+	return := Kernel32Lib uniqueInstance ffiGetEnvironmentVariable: name into: buffer size: 500.
+	
+	self reportErrorIfZero: return.
+
+	(return > 500)
+		ifTrue: [ self error: 'Not enough buffer space' ].
+	
+	^ buffer asString
 ]
 
 { #category : #'as yet unclassified' }

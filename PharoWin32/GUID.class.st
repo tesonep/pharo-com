@@ -10,7 +10,7 @@ Class {
 	#pools : [
 		'Win32Types'
 	],
-	#category : 'PharoWin32-Objects'
+	#category : #'PharoWin32-Objects'
 }
 
 { #category : #copying }
