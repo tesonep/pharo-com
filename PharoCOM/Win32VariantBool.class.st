@@ -1,7 +1,7 @@
 Class {
 	#name : #Win32VariantBool,
 	#superclass : #Win32VariantType,
-	#category : 'PharoCOM-Variant-Types'
+	#category : #'PharoCOM-Variant-Types'
 }
 
 { #category : #accessing }
@@ -11,11 +11,14 @@ Win32VariantBool >> readFrom: aVariant [
 
 { #category : #accessing }
 Win32VariantBool >> write: aValue to: aVariant [
+	| localData |
+	localData := aVariant data .
 	aValue
 		ifTrue: [ 
-			aVariant data at: 1 put: 16rFF.
-			aVariant data at: 2 put: 16rFF ]
+			localData at: 1 put: 16rFF.
+			localData at: 2 put: 16rFF ]
 		ifFalse: [ 
-			aVariant data at: 1 put: 0.
-			aVariant data at: 2 put: 0 ]
+			localData at: 1 put: 0.
+			localData at: 2 put: 0 ].
+	aVariant data: localData
 ]

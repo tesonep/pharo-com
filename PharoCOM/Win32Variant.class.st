@@ -126,9 +126,11 @@ Win32Variant >> getHandleAsExternalAddress [
 { #category : #initialization }
 Win32Variant >> init [
 	" Inits the variant to be used in COM calls"
-	| returnCode |
-	returnCode := OleAut32Lib uniqueInstance ffiVariantInit: self getHandleAsExternalAddress.
-	self reportErrorIfNoZero: returnCode.
+	OleAut32Lib uniqueInstance ffiVariantInit: self getHandleAsExternalAddress.
+	
+"	| returnCode | "
+"	returnCode := OleAut32Lib uniqueInstance ffiVariantInit: self getHandleAsExternalAddress.  "
+"	self reportErrorIfNoZero: returnCode.  "
 ]
 
 { #category : #printing }
