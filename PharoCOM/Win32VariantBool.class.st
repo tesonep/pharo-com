@@ -4,6 +4,11 @@ Class {
 	#category : #'PharoCOM-Variant-Types'
 }
 
+{ #category : #'as yet unclassified' }
+Win32VariantBool >> checkIfElementaryTypeAndWrite: aValue to: aVariant [
+	self write: aValue to: aVariant
+]
+
 { #category : #accessing }
 Win32VariantBool >> readFrom: aVariant [
 	^ (aVariant data at: 1) = 16rff and: [ (aVariant data at: 2) = 16rff ]
@@ -12,7 +17,8 @@ Win32VariantBool >> readFrom: aVariant [
 { #category : #accessing }
 Win32VariantBool >> write: aValue to: aVariant [
 	| localData |
-	localData := aVariant data .
+	aVariant vt: self typeNumber. 
+	localData := aVariant data.
 	aValue
 		ifTrue: [ 
 			localData at: 1 put: 16rFF.

@@ -49,10 +49,10 @@ COMMethod >> buildFunctionArguments: arguments [
 COMMethod >> fillArguments: arguments byTypeOn: dispparams [
 	arguments doWithIndex: [ :value :idx | |type variant|
 		type := self parameterTypes at: idx.
-		variant := dispparams argsArray at: idx.
+		variant := dispparams argsArray at: (dispparams argsArray size - idx + 1).
 		variant init.
 		
-		type checkElementaryTypeAndWrite: value to: variant 
+		type checkIfElementaryTypeAndWrite: value to: variant 
 	]
 ]
 

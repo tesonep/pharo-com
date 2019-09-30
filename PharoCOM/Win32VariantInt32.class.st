@@ -5,8 +5,8 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Win32VariantInt32 >> checkElementaryTypeAndWrite: aValue to: aVariant [
-	aValue asWin32VariantInto: aVariant
+Win32VariantInt32 >> checkIfElementaryTypeAndWrite: aValue to: aVariant [
+	self write: aValue to: aVariant
 ]
 
 { #category : #accessing }
