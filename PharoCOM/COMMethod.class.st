@@ -51,8 +51,8 @@ COMMethod >> fillArguments: arguments byTypeOn: dispparams [
 		type := self parameterTypes at: idx.
 		variant := dispparams argsArray at: idx.
 		variant init.
-		variant vt: type typeNumber.
-		type write: value to: variant 
+		
+		type checkElementaryTypeAndWrite: value to: variant 
 	]
 ]
 
