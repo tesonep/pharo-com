@@ -31,7 +31,7 @@ OleAut32Lib >> ffiVariantClear: aPointer [
 
 { #category : #'as yet unclassified' }
 OleAut32Lib >> ffiVariantInit: pointer [
-	^ self ffiCall: #(HRESULT VariantInit #(void * pointer))
+	^ self ffiCall: #(void VariantInit #(void * pointer))
 ]
 
 { #category : #'accessing platform' }
