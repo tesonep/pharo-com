@@ -4,9 +4,16 @@ Class {
 	#category : #'PharoCOM-Tests'
 }
 
+{ #category : #testing }
+IDispatchTest >> isCI [
+	^ (OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true' 
+]
+
 { #category : #tests }
 IDispatchTest >> testADODBConnection [
 	| conn state |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
 	Ole32Lib uniqueInstance initLibrary.
 	conn := COMDispatchInstance createInstanceByName: 'ADODB.Connection' .
 	conn dispatch: 'Open' withArguments: { 'connection string;' . 'username' . 'password' } .
@@ -19,6 +26,8 @@ IDispatchTest >> testADODBConnection [
 { #category : #tests }
 IDispatchTest >> testADODBConnectionAndRecordset [
 	| conn rst recordCount |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
 	Ole32Lib uniqueInstance initLibrary.
 	conn := COMDispatchInstance createInstanceByName: 'ADODB.Connection' .
 	conn dispatch: 'Open' withArguments: { 'connection string;' . 'username' . 'password'  } .  
@@ -34,6 +43,8 @@ IDispatchTest >> testADODBConnectionAndRecordset [
 { #category : #tests }
 IDispatchTest >> testADODBRecordset [
 	| rst recordCount |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
 	Ole32Lib uniqueInstance initLibrary.
 	rst := COMDispatchInstance createInstanceByName: 'ADODB.Recordset' .
 	rst dispatch: 'Open' withArguments: { 
@@ -98,6 +109,8 @@ IDispatchTest >> testCallingVoidFunction [
 { #category : #tests }
 IDispatchTest >> testWord [
 	| wrd docs sel someText |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
 	someText := 'Hello from Pharo!'.
 	Ole32Lib uniqueInstance initLibrary.
 	wrd := COMDispatchInstance createInstanceByName: 'Word.Application'.
