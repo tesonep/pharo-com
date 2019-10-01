@@ -10,7 +10,7 @@ Class {
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM'
+	#category : #PharoCOM
 }
 
 { #category : #'instance creation' }
@@ -31,6 +31,12 @@ COMProperty >> calculateType [
 COMProperty >> getFrom: aObj [ 
 	getter ifNil: [ self error: 'The property ' , name , ' does not allow to be read.'  ].
 	^ getter invokeOn: aObj withArgs: #().
+]
+
+{ #category : #accessing }
+COMProperty >> getFrom: aObj withArguments: arguments [ 
+	getter ifNil: [ self error: 'The property ' , name , ' does not allow to be read.'  ].
+	^ getter invokeOn: aObj withArgs: arguments.
 ]
 
 { #category : #accessing }
