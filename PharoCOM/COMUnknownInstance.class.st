@@ -32,6 +32,13 @@ COMUnknownInstance >> addRef [
 	^ self ffiAddRef.
 ]
 
+{ #category : #converting }
+COMUnknownInstance >> asWin32VariantInto: aVariant [
+	| type | 
+	type := Win32Variant typeFor: 9. "<-- can this be done with #COMDispatchInstance and TypeMapping?"
+	type write: self to: aVariant
+]
+
 { #category : #'reference counting' }
 COMUnknownInstance >> ffiAddRef [
 
