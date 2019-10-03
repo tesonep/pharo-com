@@ -56,6 +56,6 @@ Win32VariantPointer >> write: anInnerVariant to: aVariant [
 	| type |
 
 	type := Win32Variant typeFor: 12.
-	aVariant vt: type typeNumber + 16r4000.
+	aVariant vt: type typeNumber + 16r4000. "VT_BYREF"
 	aVariant rawData pointerAt: 1 put: anInnerVariant getHandleAsExternalAddress  .
 ]
