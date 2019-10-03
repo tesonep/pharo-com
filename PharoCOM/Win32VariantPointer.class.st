@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'inner'
 	],
-	#category : 'PharoCOM-Variant-Types'
+	#category : #'PharoCOM-Variant-Types'
 }
 
 { #category : #'instance creation' }
@@ -17,6 +17,11 @@ Win32VariantPointer class >> wrap: otherType [
 { #category : #comparing }
 Win32VariantPointer >> = other [
 	^ other species = self species and: [ self inner = other inner ]
+]
+
+{ #category : #accessing }
+Win32VariantPointer >> checkIfElementaryTypeAndWrite: aValue to: aVariant [ 
+	aValue asWin32VariantInto: aVariant
 ]
 
 { #category : #accessing }

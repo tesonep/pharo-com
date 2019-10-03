@@ -71,7 +71,7 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantUnimplementedType new: #PTR as: 26).
 		(Win32VariantUnimplementedType new: #SAFEARRAY as: 27).
 		(Win32VariantUnimplementedType new: #CARRAY as: 28).
-		(Win32VariantUserDefinedType new: #USERDEFINED as: 29).
+		(Win32VariantUserDefined new: #USERDEFINED as: 29).
 		(Win32VariantUnimplementedType new: #String as: 30).
 		(Win32VariantUnimplementedType new: #Win32WideString as: 31).
 		(Win32VariantUnimplementedType new: #RECORD as: 32).
