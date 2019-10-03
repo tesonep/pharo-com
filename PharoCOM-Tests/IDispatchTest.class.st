@@ -42,7 +42,7 @@ IDispatchTest >> testADODBConnectionAndRecordset [
 
 { #category : #tests }
 IDispatchTest >> testADODBRecordset [
-	| rst recordCount |
+	| rst recordCountLoop recordCountReported |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
 
 	Ole32Lib uniqueInstance initLibrary.
@@ -50,11 +50,17 @@ IDispatchTest >> testADODBRecordset [
 	rst dispatch: 'Open' withArguments: { 
 		'Table name or SQL SELECT' . 
 		'connection string including authentication details (usrn pwd)' . 
-		3 . 
-		1 } . 
-	recordCount := rst propertyNamed: 'RecordCount'.  
+		3 .   "<-- CursorType adOpenStatic"
+		1 } . "<-- LockType adLockReadOnly"
+	recordCountLoop := 0.
+	[ rst propertyNamed: 'EOF' ] whileFalse: [ 
+		recordCountLoop := recordCountLoop + 1.
+		rst dispatch: 'MoveNext'
+	 ].
+	recordCountReported := rst propertyNamed: 'RecordCount'.  
 	rst dispatch: 'Close'.
-	self assert: recordCount  equals: 14566   "<-- change to number of records"
+	self assert: recordCountLoop  equals: recordCountReported
+
 
 ]
 
