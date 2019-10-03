@@ -108,20 +108,21 @@ IDispatchTest >> testCallingVoidFunction [
 
 { #category : #tests }
 IDispatchTest >> testWord [
-	| wrd documents sel someText |
+	| wrd documents selection someText |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
 
 	someText := 'Hello from Pharo!'.
 	
 	Ole32Lib uniqueInstance initLibrary.
+	
 	wrd := COMDispatchInstance createInstanceByName: 'Word.Application'.
 	wrd propertyNamed: 'Visible' put: true. 
 	documents := wrd propertyNamed: 'Documents'.
 	documents dispatch: 'Add'.
-	sel := wrd propertyNamed: 'Selection'. 
-	sel dispatch: 'TypeText' withArguments: { someText }.
-	sel dispatch: 'WholeStory' .
-	self assert: (sel propertyNamed: 'Text') allButLast equals: someText.
+	selection := wrd propertyNamed: 'Selection'. 
+	selection dispatch: 'TypeText' withArguments: { someText }.
+	selection dispatch: 'WholeStory' .
+	self assert: (selection propertyNamed: 'Text') allButLast equals: someText.
 	
 	documents dispatch: 'Add'.
 	(wrd propertyNamed: 'Selection') 
@@ -129,8 +130,8 @@ IDispatchTest >> testWord [
 		withArguments: { (someText, ' Some additional text.') }.
 	(documents dispatch: 'Item' withArguments: { 2 })
 		dispatch: 'Activate'.
-	sel := wrd propertyNamed: 'Selection'. 
-	sel dispatch: 'WholeStory' .
-	self assert: (sel propertyNamed: 'Text') allButLast equals: someText.
+	selection := wrd propertyNamed: 'Selection'. 
+	selection dispatch: 'WholeStory' .
+	self assert: (selection propertyNamed: 'Text') allButLast equals: someText.
 	
 ]
