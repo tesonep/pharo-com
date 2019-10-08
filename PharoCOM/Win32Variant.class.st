@@ -44,20 +44,20 @@ Win32Variant class >> initializeTypeMapping [
 	PointerType := 26.
 
 	TypeMapping := ({
-		(Win32VariantUnimplementedType new: #NULL as: 1).
+		(Win32VariantNull new: #NULL as: 1).
 		(Win32VariantUnimplementedType new: #int16 as: 2).
 		(Win32VariantInt32 new: #int32 as: 3).
 		(Win32VariantUnimplementedType new: #float as: 4).
-		(Win32VariantUnimplementedType new: #double as: 5).
+		(Win32VariantDouble new: #double as: 5).
 		(Win32VariantUnimplementedType new: #CURRENCY as: 6).
-		(Win32VariantUnimplementedType new: #DATE as: 7).
+		(Win32VariantDate new: #DATE as: 7).
 		(Win32VariantBSTRString new: #BSTRString as: 8).
 		(Win32VariantCOMInstance new: #COMDispatchInstance as: 9).
 		(Win32VariantUnimplementedType new: #ERROR as: 10).
 		(Win32VariantBool new: #BOOL as: 11).
 		(Win32VariantType new: #Win32Variant as: 12).
 		(Win32VariantCOMInstance new: #COMUnknownInstance as: 13).
-		(Win32VariantUnimplementedType new: #DECIMAL as: 14).
+		(Win32VariantDecimal new: #DECIMAL as: 14).
 		(Win32VariantUnimplementedType new: #byte as: 16).
 		(Win32VariantUnimplementedType new: #ubyte as: 17).
 		(Win32VariantUnimplementedType new: #uint16 as: 18).
