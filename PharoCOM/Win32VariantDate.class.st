@@ -23,8 +23,9 @@ Win32VariantDate >> write: aValue to: aVariant [
 	aVariant vt: self typeNumber.
 
 	dateAsFloat := aValue julianDayNumber - DateAndTime oleEpoch julianDayNumber + 2.
-	seconds := aValue secondsSinceMidnightUTC .
-	dateAsFloat := dateAsFloat + (seconds / 86400.0)	.
+	(aValue class = DateAndTime) ifTrue: [ 
+		seconds := aValue secondsSinceMidnightUTC .
+		dateAsFloat := dateAsFloat + (seconds / 86400.0)]	.
 	
 	aVariant rawData doubleAt: 1 put: dateAsFloat.
 ]
