@@ -4,6 +4,11 @@ Class {
 	#category : #'PharoCOM-Variant-Types'
 }
 
+{ #category : #'as yet unclassified' }
+Win32VariantNull >> checkIfElementaryTypeAndWrite: aValue to: aVariant [
+	self write: aValue to: aVariant
+]
+
 { #category : #accessing }
 Win32VariantNull >> readFrom: aVariant [
 	^ nil 
