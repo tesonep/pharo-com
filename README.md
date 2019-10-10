@@ -94,6 +94,7 @@ VarType    | Propvariant Type | Pharo variant type      | Pharo base class/insta
 13   | VT_UNKNOWN       | Win32VariantCOMInstance | /
 14   | VT_DECIMAL       | Win32VariantDecimal     | 3)
 24   | VT_VOID          | Win32VariantVoid        | / 
+26   | VT_PTR           | Win32VariantPointer     | 2)
 29   | VT_USERDEFINED   | Win32VariantUserDefined | /
  
 1) Reading from variant of VT_NULL type returns nil, writing into VT_NULL is done by sending Win32VariantNull>>#write: aValue to: aVariant, where aValue is ignored
