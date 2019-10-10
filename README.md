@@ -85,6 +85,7 @@ VarType    | Propvariant Type | Pharo variant type      | Pharo base class/insta
 -----------|------------------|-------------------------|---------------------------
 1   | VT_NULL          | Win32VariantNull 1)     | 1)
 3   | VT_I4            | Win32VariantInt32       | SmallInteger
+5   | VT_R8            | Win32VariantDouble      | /
 7   | VT_DATE          | Win32VariantDate        | Date, DateAndTime
 8   | VT_BSTR          | Win32VariantBSTRString  | String
 9   | VT_DISPATCH      | Win32VariantCOMInstance | /
