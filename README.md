@@ -71,6 +71,8 @@ So, in PharoCOM we have these methods to manipulate components:
 - `COMDispatchInstance>>#propertyNamed:`, `COMDispatchInstance>>#propertyNamed:withArguments:` and `COMDispatchInstance>>#propertyNamed:put:` to read and write from their properties
 - `COMDispatchInstance>>#dispatch:` and `COMDispatchInstance>>#dispatch:withArguments:` to call upon components' methods. Arguments should be given in a form of an Array.
 
+### COM data marshalling
+
 COM data marshalling is done by a special "variant" data types (https://en.wikipedia.org/wiki/Variant_type). Usually, when the server component receives a dispatch from us, it tries to convert arguments (if any) by firstly issuing a call to the VariantChangeType() API function in OleAut32.dll. In this way, the argument's value is converted to a data type that is expected by the server method. If this doesn't succeeed, a dispatch fails. At the moment, PharoCOM supports variant types as follows from the table bellow. That's why this argument passing is normally not problematic, however we should pay attention - for instance, if COM server method expects an integer and we send it a string '15', it will convert it into an integer 10 just fine.
 
 When a variant is returned from a dispatch method, it is converted to a Pharo instance of a certain type. The conversion is done by Pharo variant type (please see the table below). For instance, if the received value is of VT_I4 type, it is converted to Integer and the way that conversion is done can be checked in Win32VariantInt32>>#readFrom:. Similarly, when receiving a pointer to a COM component (as VT_DISPATCH), it is converted to COMDispatchInstance by Pharo variant type of Win32VariantCOMInstance.
