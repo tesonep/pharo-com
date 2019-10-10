@@ -98,10 +98,10 @@ VarType    | Propvariant Type | Pharo variant type      | Pharo base class/insta
 29   | VT_USERDEFINED   | Win32VariantUserDefined | /
  
 1) Reading from variant of VT_NULL type returns nil, writing into VT_NULL is done by sending Win32VariantNull>>#write: aValue to: aVariant, where aValue is ignored
-2) To pass arguments as VT_VARIANT, use Win32VariantPointer>>checkIfElementaryTypeAndWrite: aValue to: aVariant. This method implements a pointer VT_VARIANT | VT_BYREF - that is, our variant becomes a pointer which points to another variant structure in memory with the actual value
+2) To prepare a variant as VT_VARIANT, use Win32VariantPointer>>checkIfElementaryTypeAndWrite: aValue to: aVariant. This method implements a pointer VT_VARIANT | VT_BYREF - that is, our variant becomes a pointer which points to another variant structure in memory with the actual value
 3) Writing to VT_DECIMAL is implemented as Win32VariantDouble>>#write: aValue to: aVariant. If the passing aValue is ScaledDecimal, the corresponding scale is used in marshalling. Otherwise, the default scale is 2. The scale means the number of digits to the right of the decimal point.
 
-A direct reading and writing to variants is not necessary if we use the methods #dispatch:withArguments: and #propertyNamed:withArguments:. If you eventually need this, it can be done by firstly reserving an external memory space as:
+For "simple" dispatch activities and propery getters and setters the types conversion is done automatically. A direct reading and writing to variants is not necessary if we use the methods #dispatch:withArguments: and #propertyNamed:withArguments:. If you eventually need this, it can be done by firstly reserving an external memory space as:
 
 ```smalltalk
 variant := Win32Variant externalNew.
