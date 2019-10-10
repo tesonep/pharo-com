@@ -130,7 +130,7 @@ type write: (12345.54321 asScaledDecimal: 4) to: variant.
 Reading is done by:
 
 ```smalltalk
-type readFrom: variant
+type readFrom: variant  ---> "12345.5432s4"
 ```
 
 ## Development, Goals, Contributing
