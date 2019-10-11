@@ -42,7 +42,7 @@ IDispatchTest >> testADODBConnectionAndRecordset [
 
 { #category : #tests }
 IDispatchTest >> testADODBRecordset [
-	| rst recordCount |
+	| rst recordCountLoop recordCountReported |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
 
 	Ole32Lib uniqueInstance initLibrary.
@@ -50,11 +50,17 @@ IDispatchTest >> testADODBRecordset [
 	rst dispatch: 'Open' withArguments: { 
 		'Table name or SQL SELECT' . 
 		'connection string including authentication details (usrn pwd)' . 
-		3 . 
-		1 } . 
-	recordCount := rst propertyNamed: 'RecordCount'.  
+		3 .   "<-- CursorType adOpenStatic"
+		1 } . "<-- LockType adLockReadOnly"
+	recordCountLoop := 0.
+	[ rst propertyNamed: 'EOF' ] whileFalse: [ 
+		recordCountLoop := recordCountLoop + 1.
+		rst dispatch: 'MoveNext'
+	 ].
+	recordCountReported := rst propertyNamed: 'RecordCount'.  
 	rst dispatch: 'Close'.
-	self assert: recordCount  equals: 14566   "<-- change to number of records"
+	self assert: recordCountLoop  equals: recordCountReported
+
 
 ]
 
@@ -108,18 +114,30 @@ IDispatchTest >> testCallingVoidFunction [
 
 { #category : #tests }
 IDispatchTest >> testWord [
-	| wrd docs sel someText |
+	| wrd documents selection someText |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
 
 	someText := 'Hello from Pharo!'.
+	
 	Ole32Lib uniqueInstance initLibrary.
+	
 	wrd := COMDispatchInstance createInstanceByName: 'Word.Application'.
 	wrd propertyNamed: 'Visible' put: true. 
-	docs := wrd propertyNamed: 'Documents'.
-	docs dispatch: 'Add'.
-	sel := wrd propertyNamed: 'Selection'. 
-	sel dispatch: 'TypeText' withArguments: { someText }.
-	sel dispatch: 'WholeStory' .
-	self assert: (sel propertyNamed: 'Text') allButLast equals: someText.
-
+	documents := wrd propertyNamed: 'Documents'.
+	documents dispatch: 'Add'.
+	selection := wrd propertyNamed: 'Selection'. 
+	selection dispatch: 'TypeText' withArguments: { someText }.
+	selection dispatch: 'WholeStory' .
+	self assert: (selection propertyNamed: 'Text') allButLast equals: someText.
+	
+	documents dispatch: 'Add'.
+	(wrd propertyNamed: 'Selection') 
+		dispatch: 'TypeText' 
+		withArguments: { (someText, ' Some additional text.') }.
+	(documents dispatch: 'Item' withArguments: { 2 })
+		dispatch: 'Activate'.
+	selection := wrd propertyNamed: 'Selection'. 
+	selection dispatch: 'WholeStory' .
+	self assert: (selection propertyNamed: 'Text') allButLast equals: someText.
+	
 ]

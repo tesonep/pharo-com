@@ -8,7 +8,7 @@ Class {
 	#pools : [
 		'COMTypes'
 	],
-	#category : 'PharoCOM'
+	#category : #PharoCOM
 }
 
 { #category : #'instance creation' }
@@ -138,6 +138,13 @@ COMDispatchInstance >> propertyNamed: aPropName put: aValue [
 	| prop |
 	prop := self getDispatchType properties detect: [ :e | e name = aPropName ].
 	^ prop write: aValue to: self.
+]
+
+{ #category : #'as yet unclassified' }
+COMDispatchInstance >> propertyNamed: aPropName withArguments: arguments [
+	| prop |
+	prop := self getDispatchType properties detect: [ :e | e name = aPropName ].
+	^ prop getFrom: self withArguments: arguments.
 ]
 
 { #category : #querying }
