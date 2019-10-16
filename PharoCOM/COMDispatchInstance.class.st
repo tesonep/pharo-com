@@ -140,7 +140,7 @@ COMDispatchInstance >> propertyNamed: aPropName put: aValue [
 	^ prop write: aValue to: self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #properties }
 COMDispatchInstance >> propertyNamed: aPropName withArguments: arguments [
 	| prop |
 	prop := self getDispatchType properties detect: [ :e | e name = aPropName ].
