@@ -33,7 +33,7 @@ VariantsTests >> testDateAndTime [
 	| variant type valuePut valueGet  |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"	
 	
-	valuePut := DateAndTime now truncated.
+	valuePut := DateAndTime now truncated. 
 	
 	variant := Win32Variant externalNew .
 	variant autoRelease .
@@ -44,7 +44,7 @@ VariantsTests >> testDateAndTime [
 	type := Win32Variant typeFor: 7. "<-- date"
 	
 	valueGet := type readFrom: variant.
-	self assert: valueGet equals: valuePut.
+	self assert: valueGet asDate equals: valuePut asDate.
 ]
 
 { #category : #tests }

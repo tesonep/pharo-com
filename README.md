@@ -66,10 +66,18 @@ selection dispatch: 'WholeStory' .
 textFromWord := selection propertyNamed: 'Text'.
 ```
 
+When we don't need the services of the server COM object anymore, we tell that to COM system by:
+
+```smalltalk
+wrd finalize.
+```
+
+
 So, in PharoCOM we have these methods to manipulate components:
 - `COMDispatchInstance class>>#createInstanceByName:` and `COMDispatchInstance class>>#createInstanceOf:` to create COM components
 - `COMDispatchInstance>>#propertyNamed:`, `COMDispatchInstance>>#propertyNamed:withArguments:` and `COMDispatchInstance>>#propertyNamed:put:` to read and write from their properties
 - `COMDispatchInstance>>#dispatch:` and `COMDispatchInstance>>#dispatch:withArguments:` to call upon components' methods. Arguments should be given in a form of an Array.
+- `COMUnknownInstance>>#finalize` to release a COM component (technically, this decrements the reference count for an interface on a COM object).
 
 ### COM data marshalling
 
@@ -87,14 +95,14 @@ VarType    | Propvariant Type | Pharo variant type      | Pharo base class/insta
 -----------|------------------|-------------------------|---------------------------
 1   | VT_NULL          | Win32VariantNull 1)     | 1)
 3   | VT_I4            | Win32VariantInt32       | SmallInteger
-5   | VT_R8            | Win32VariantDouble      | /
+5   | VT_R8            | Win32VariantDouble      | Float
 7   | VT_DATE          | Win32VariantDate        | Date, DateAndTime
 8   | VT_BSTR          | Win32VariantBSTRString  | String
 9   | VT_DISPATCH      | Win32VariantCOMInstance | /
 11   | VT_BOOLEAN       | Win32VariantBool        | Boolean    
 12   | VT_VARIANT       | Win32VariantType        | 2)
 13   | VT_UNKNOWN       | Win32VariantCOMInstance | /
-14   | VT_DECIMAL       | Win32VariantDecimal     | 3)
+14   | VT_DECIMAL       | Win32VariantDecimal     | ScaledDecimal 3)
 24   | VT_VOID          | Win32VariantVoid        | / 
 26   | VT_PTR           | Win32VariantPointer     | 2)
 29   | VT_USERDEFINED   | Win32VariantUserDefined | /

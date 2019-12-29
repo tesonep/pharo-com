@@ -19,6 +19,7 @@ IDispatchTest >> testADODBConnection [
 	conn dispatch: 'Open' withArguments: { 'connection string;' . 'username' . 'password' } .
 	state := conn propertyNamed: 'State' .
 	conn dispatch: 'Close'.
+	conn finalize.
 	self assert: state equals: 1.
 
 ]
@@ -36,6 +37,8 @@ IDispatchTest >> testADODBConnectionAndRecordset [
 	recordCount := rst propertyNamed: 'RecordCount'.  
 	rst dispatch: 'Close'.
 	conn dispatch: 'Close'.
+	rst finalize.
+	conn finalize.
 	self assert: recordCount  equals: 14566 "<-- change to number of records"
 
 ]
@@ -59,6 +62,7 @@ IDispatchTest >> testADODBRecordset [
 	 ].
 	recordCountReported := rst propertyNamed: 'RecordCount'.  
 	rst dispatch: 'Close'.
+	rst finalize.
 	self assert: recordCountLoop  equals: recordCountReported
 
 
@@ -85,6 +89,7 @@ IDispatchTest >> testAccessingBoolProperties [
 	self assert: value equals: false.
 
 	obj dispatch: #Quit.
+	obj finalize.
 ]
 
 { #category : #tests }
@@ -100,6 +105,7 @@ IDispatchTest >> testAccessingInt32Properties [
 	self assert: 250 equals: value.
 	
 	obj dispatch: #Quit.
+	obj finalize.
 ]
 
 { #category : #tests }
@@ -110,6 +116,8 @@ IDispatchTest >> testCallingVoidFunction [
 	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
 
 	obj dispatch: #Quit.
+	obj finalize.
+
 ]
 
 { #category : #tests }
@@ -138,6 +146,8 @@ IDispatchTest >> testWord [
 		dispatch: 'Activate'.
 	selection := wrd propertyNamed: 'Selection'. 
 	selection dispatch: 'WholeStory' .
+
+	wrd finalize.
 	self assert: (selection propertyNamed: 'Text') allButLast equals: someText.
 	
 ]
