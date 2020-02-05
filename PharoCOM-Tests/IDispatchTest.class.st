@@ -69,6 +69,23 @@ IDispatchTest >> testADODBRecordset [
 ]
 
 { #category : #tests }
+IDispatchTest >> testAccess [
+	| access |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
+	Ole32Lib uniqueInstance initLibrary.
+	
+	access := COMDispatchInstance createInstanceByName: 'Access.Application'.
+	access propertyNamed: 'Visible' put: true. 
+	access dispatch: 'OpenCurrentDatabase' withArguments: { 'C:\Users\santiago\Documents\Northwind.accdb' }.
+	
+	self halt.
+	access dispatch: 'Quit'.
+	access finalize. 
+	
+]
+
+{ #category : #tests }
 IDispatchTest >> testAccessingBoolProperties [
 	| obj value |
 	Ole32Lib uniqueInstance initLibrary.

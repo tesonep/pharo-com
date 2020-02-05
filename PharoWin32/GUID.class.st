@@ -124,7 +124,7 @@ GUID >> data4: anObject [
 ]
 
 { #category : #printing }
-GUID >> pad: aNumber to: digits. [
+GUID >> pad: aNumber to: digits [.
 	^ (('0' repeat: digits) , (aNumber printStringBase: 16)) last: digits.
 ]
 
