@@ -138,6 +138,20 @@ IDispatchTest >> testCallingVoidFunction [
 ]
 
 { #category : #tests }
+IDispatchTest >> testInvoking2ArgumentMethod [
+	| obj |
+	Ole32Lib uniqueInstance initLibrary.
+
+	obj := COMDispatchInstance createInstanceByName: 'InternetExplorer.Application'.
+	
+	obj dispatch: #PutProperty withArguments: { 'aProperty'. 42 }.
+	self assert: (obj dispatch: #GetProperty withArguments: { 'aProperty'.}) equals: 42.
+		
+	obj dispatch: #Quit.
+	obj finalize.
+]
+
+{ #category : #tests }
 IDispatchTest >> testWord [
 	| wrd documents selection someText |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
