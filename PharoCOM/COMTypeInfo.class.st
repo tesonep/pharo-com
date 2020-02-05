@@ -206,7 +206,8 @@ COMTypeInfo >> getNamesOfMemberID: memberId maxNames: maxNames [
 	
 	cant := holder unsignedLongAt: 1.
 	wideStrings := OrderedCollection new.
-	0 to:(cant - 1) do:[:idx | wideStrings add: (Win32WideString fromHandle: (arrayStrings pointerAt: (1 + (Smalltalk wordSize * idx))))].
+	0 to:(cant - 1) do:[:idx | wideStrings add: (BSTRString fromHandle: (arrayStrings pointerAt: (1 + (Smalltalk wordSize * idx))))].
+	
 	wideStrings do: #autoRelease.
 	
 	^ wideStrings collect: #asString
