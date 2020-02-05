@@ -8,6 +8,8 @@ PharoWin32 is a repository to support Pharo developers in Windows environments. 
 
 The default group loads PharoWin32, PharoCOM, VTable-FFI-Extension and related packages:
 
+For Pharo 8 and 9 the version to use is the one in master:
+
 ```smalltalk
 Metacello new
   baseline: 'PharoWin32';
@@ -15,6 +17,14 @@ Metacello new
   load.
 ```
 
+As the UFFI support have changed in Pharo 8, to use this project in Pharo 7 we have to load the v1.0.0 version, with: 
+
+```smalltalk
+Metacello new
+  baseline: 'PharoWin32';
+  repository: 'github://tesonep/pharo-com:v1.0.0';
+  load.
+```
 
 ## Basic usage 
 
