@@ -57,7 +57,7 @@ Win32Variant class >> initializeTypeMapping [
 
 	TypeMapping := ({
 		(Win32VariantNull new: #NULL as: 1).
-		(Win32VariantUnimplementedType new: #int16 as: 2).
+		(Win32VariantInt16 new: #int16 as: 2).
 		(Win32VariantInt32 new: #int32 as: 3).
 		(Win32VariantUnimplementedType new: #float as: 4).
 		(Win32VariantDouble new: #double as: 5).
