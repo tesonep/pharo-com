@@ -17,7 +17,7 @@ Metacello new
   load.
 ```
 
-As the UFFI support have changed in Pharo 8, to use this project in Pharo 7 we have to load the v1.0.0 version, with: 
+As the UFFI support have changed in Pharo 8, to use this project in Pharo 7 32-bits we have to load the v1.0.0 version, with: 
 
 ```smalltalk
 Metacello new
@@ -25,6 +25,8 @@ Metacello new
   repository: 'github://tesonep/pharo-com:v1.0.0';
   load.
 ```
+Sadly, we have not support for Pharo 7 64bits.
+The support for 64bits requires changes done in UFFI in Pharo 8. So, sadly if you want to use 64bits images please use at least Pharo8.
 
 ## Basic usage 
 
