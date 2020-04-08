@@ -5,6 +5,26 @@ Class {
 }
 
 { #category : #tests }
+WordTest >> testGettingXMLContent [
+	| wrd documents doc contents xmlDocument |
+	self isCI ifTrue: [ ^self skip ]. "CI detect"
+
+	Ole32Lib uniqueInstance initLibrary.
+	
+	wrd := COMDispatchInstance createInstanceByName: 'Word.Application'.
+	wrd propertyNamed: 'Visible' put: true. 
+	documents := wrd propertyNamed: 'Documents'.
+	documents dispatch: 'Add'.
+
+	doc := documents dispatch: 'Item' withArguments: { 1 }.
+	contents := doc propertyNamed: 'Content'.
+	xmlDocument := contents propertyNamed: 'WordOpenXML'.
+	
+	wrd dispatch: #Quit.
+	wrd finalize.
+]
+
+{ #category : #tests }
 WordTest >> testWord [
 	| wrd documents selection someText |
 	self isCI ifTrue: [ ^self skip ]. "CI detect"
