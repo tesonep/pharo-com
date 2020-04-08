@@ -1,6 +1,6 @@
 Class {
 	#name : #Ole32Lib,
-	#superclass : #FFILibrary,
+	#superclass : #Win32FFILibrary,
 	#pools : [
 		'COMTypes'
 	],

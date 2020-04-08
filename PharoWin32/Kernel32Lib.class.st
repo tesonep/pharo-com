@@ -1,11 +1,6 @@
 Class {
 	#name : #Kernel32Lib,
-	#superclass : #FFILibrary,
-	#traits : 'TWinErrorChecker',
-	#classTraits : 'TWinErrorChecker classTrait',
-	#pools : [
-		'Win32Types'
-	],
+	#superclass : #Win32FFILibrary,
 	#category : #PharoWin32
 }
 

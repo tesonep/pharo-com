@@ -1,32 +1,53 @@
 Class {
 	#name : #VTableFFICalloutMethodBuilder,
-	#superclass : #FFICalloutMethodBuilder,
+	#superclass : #TFCalloutMethodBuilder,
 	#category : #'VTable-FFI-Extension'
 }
 
 { #category : #private }
 VTableFFICalloutMethodBuilder >> generateFFICallout: builder spec: functionSpec [
-	"Builds a method call"
+	| properties |
+
+	"Copy the properties of the old method"
+	sender methodProperties ifNotNil: [ 
+		properties := sender methodProperties copy.
+		properties method: nil.
+		builder properties: properties ].
+	
 	builder
 		numArgs: self method argumentNames size;
 		addTemps: (self method argumentNames copyWith: #result).
-	"modify the ffi call with the table position"
 
+	TFCalloutAPI isTracing ifTrue: [ 
+		TFCalloutAPI trace: sender. 
+		builder 
+			pushLiteral: TFCalloutAPI;
+			pushLiteral: sender;
+			send: #trace: ].
+
+	"Obtain the library to use"
+	builder 
+		pushReceiver;
+		send: #ffiLibrary;
+		send: #uniqueInstance.
+		
+	"Obtain the runner to use."
+	builder send: #runner.
+	
 	builder pushReceiver.
 	"save ffi call as literal"
 	builder pushLiteral: (self createFFICalloutLiteralFromSpec: functionSpec).
 	builder pushLiteral: (self calloutAPI tablePosition).
 	builder send:#modifyFFICall:withTablePosition:.
-	
+
 	"iterate arguments in order (in the function) to create the function call"
-	functionSpec arguments
-		do: [ :each | each emitArgument: builder context: sender inCallout: self requestor].
+	functionSpec arguments do: [ :each | each emitArgument: builder context: sender inCallout: self requestor ].
 	"create the array"
 	builder pushConsArray: functionSpec arguments size.
 	"send call and store into result"
-	builder send: #invokeWithArguments:.
-	functionSpec arguments
-		do: [ :each | each emitReturnArgument: builder context: sender ].
+	builder send: #invokeFunction:withArguments:.
+	
+	functionSpec arguments do: [ :each | each emitReturnArgument: builder context: sender ].
 	"convert in case return type needs it. And return reseult"
 	^ functionSpec returnType
 		emitReturn: builder
