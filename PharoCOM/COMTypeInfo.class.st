@@ -17,19 +17,20 @@ Class {
 }
 
 { #category : #'calculating members' }
-COMTypeInfo >> calculateMethodAt: anInteger [ 
+COMTypeInfo >> calculateMethodAt: anInteger [
 	| pointer funDesc r |
-	
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.
-	r := self ffiGetFuncDesc: pointer at: (anInteger - 1).
-	
-	self reportErrorIfNoZero: r.
-	
-	[	
-		funDesc := COMFuncDesc fromHandle: pointer.
-		^ COMMethod fromFuncDesc: funDesc in: self.
-	] ensure: [ funDesc ifNotNil: [ self ffiReleaseFuncDesc: funDesc ] ]
+	r := self ffiGetFuncDesc: pointer at: anInteger - 1.
+	[ self reportErrorIfNoZero: r ]
+		on: Error
+		do: [ :e | 
+			^ COMErrorOnDiscovery new
+				setError: e;
+				yourself ].
+	[ funDesc := COMFuncDesc fromHandle: pointer.
+	^ COMMethod fromFuncDesc: funDesc in: self ]
+		ensure: [ funDesc ifNotNil: [ self ffiReleaseFuncDesc: funDesc ] ]
 ]
 
 { #category : #'calculating members' }

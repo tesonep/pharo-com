@@ -15,6 +15,8 @@ Win32WideString class >> fromByteArray: byteArray [
 
 { #category : #'instance creation' }
 Win32WideString class >> fromHandle: handle [
+	handle isNull
+		ifTrue: [ ^ self error: 'Trying to create a null string' ].
 	^ self new
 		handle: handle;
 		yourself
@@ -51,8 +53,7 @@ Win32WideString class >> new: size [
 Win32WideString >> asString [
 	| out r |
 
-	out := ByteArray new: (self size * 4) + 1.
-
+	out := ByteArray new: self size * 4 + 1.
 	r := Kernel32Lib uniqueInstance
 		ffiWideCharacterToMultiByteCodepage: 65001
 		flags: 0
@@ -60,10 +61,7 @@ Win32WideString >> asString [
 		inputLen: self size + 1
 		output: out
 		outputLen: out size.
-		
 	self reportErrorIfZero: r.
-
-
 	^ (out first: r - 1) utf8Decoded
 ]
 

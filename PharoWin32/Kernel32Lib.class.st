@@ -102,7 +102,7 @@ Kernel32Lib >> lookupMessage: codeToLookup [
 
 	self ffiFormatMessageFlags: 16r00000100 | 16r00001000 | 16r00000200 source: nil messageId: codeToLookup languageId: 0 string: holder stringLen: 0 varArgs: nil.
 	
-	holder value ifNil: [ ^ '' ].
+	holder value isNull ifTrue: [ ^ '' ].
 	
 	wideString := Win32WideString fromHandle: holder value.
 	string := wideString asString.
