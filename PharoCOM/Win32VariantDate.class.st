@@ -12,10 +12,14 @@ Win32VariantDate >> checkIfElementaryTypeAndWrite: aValue to: aVariant [
 { #category : #accessing }
 Win32VariantDate >> readFrom: aVariant [
 	| dateAsFloat abstractDate |
-	dateAsFloat := (aVariant rawData copyFrom: 1 to: 8) doubleAt: 1 bigEndian: false.
+	dateAsFloat := (aVariant rawData copyFrom: 1 to: 8)
+		doubleAt: 1
+		bigEndian: false.
 	dateAsFloat := dateAsFloat + DateAndTime oleEpoch julianDayNumber - 2.
-	abstractDate := (DateAndTime julianDayNumber: dateAsFloat) truncated.
-	^ DateAndTime date: abstractDate time: (Time fromString: '00:00:00').
+ 	abstractDate := DateAndTime julianDayNumber: dateAsFloat truncated.
+	^ DateAndTime
+		date: abstractDate
+		time: (Time fromSeconds: (dateAsFloat fractionPart * 86400) rounded)
 ]
 
 { #category : #accessing }
