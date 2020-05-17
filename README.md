@@ -106,7 +106,7 @@ The classes in the fourth column in the table bellow can act as "elementary" typ
 VarType    | Propvariant Type | Pharo variant type      | Pharo base class/instances 
 -----------|------------------|-------------------------|---------------------------
 1   | VT_NULL          | Win32VariantNull 1)     | 1)
-2   | VT_I2            | Win32VariantInt16       | /
+2   | VT_I2            | Win32VariantInt16       | / 4)
 3   | VT_I4            | Win32VariantInt32       | SmallInteger
 5   | VT_R8            | Win32VariantDouble      | Float
 7   | VT_DATE          | Win32VariantDate        | Date, DateAndTime
@@ -123,6 +123,8 @@ VarType    | Propvariant Type | Pharo variant type      | Pharo base class/insta
 1) Reading from variant of VT_NULL type returns nil, writing into VT_NULL is done by sending Win32VariantNull>>#write: aValue to: aVariant, where aValue is ignored
 2) To prepare a variant as VT_VARIANT, use Win32VariantPointer>>checkIfElementaryTypeAndWrite: aValue to: aVariant. This method implements a pointer VT_VARIANT | VT_BYREF - that is, our variant becomes a pointer which points to another variant structure in memory with the actual value
 3) Writing to VT_DECIMAL is implemented as Win32VariantDecimal>>#write: aValue to: aVariant. If the passing aValue is ScaledDecimal, the corresponding scale is used in marshalling. Otherwise, the default scale is 2. The scale means the number of digits to the right of the decimal point.
+4) You can write to VT_I2 with Win32VariantInt16>>#write: aValue to: aVariant.
+
 
 For "simple" dispatch activities and propery getters and setters the types conversion is done automatically. A direct reading and writing to variants is not necessary if we use the methods #dispatch:withArguments: and #propertyNamed:withArguments:. If you eventually need this, it can be done by firstly reserving an external memory space as:
 
