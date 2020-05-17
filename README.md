@@ -106,6 +106,7 @@ The classes in the fourth column in the table bellow can act as "elementary" typ
 VarType    | Propvariant Type | Pharo variant type      | Pharo base class/instances 
 -----------|------------------|-------------------------|---------------------------
 1   | VT_NULL          | Win32VariantNull 1)     | 1)
+2   | VT_I2            | Win32VariantInt16       | /
 3   | VT_I4            | Win32VariantInt32       | SmallInteger
 5   | VT_R8            | Win32VariantDouble      | Float
 7   | VT_DATE          | Win32VariantDate        | Date, DateAndTime
