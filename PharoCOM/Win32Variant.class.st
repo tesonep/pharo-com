@@ -23,13 +23,25 @@ Win32Variant class >> fieldsDesc [
 	"
 	self rebuildFieldAccessors
 	"
-	^ #(
-		VARTYPE vt;
-		WORD  wReserved1;
-		WORD  wReserved2;
-		WORD  wReserved3;
-		Byte8 data;
-	)
+	^ Smalltalk wordSize = 4 ifTrue: [  
+		#(
+			VARTYPE vt;
+			WORD  wReserved1;
+			WORD  wReserved2;
+			WORD  wReserved3;
+			Byte8 data;
+		)		
+	] ifFalse: [ 
+		#(
+			VARTYPE vt;
+			WORD  wReserved1;
+			WORD  wReserved2;
+			WORD  wReserved3;
+			Byte16 data;
+		)			
+	 ]
+	
+
 ]
 
 { #category : #'class initialization' }
@@ -45,7 +57,7 @@ Win32Variant class >> initializeTypeMapping [
 
 	TypeMapping := ({
 		(Win32VariantNull new: #NULL as: 1).
-		(Win32VariantUnimplementedType new: #int16 as: 2).
+		(Win32VariantInt16 new: #int16 as: 2).
 		(Win32VariantInt32 new: #int32 as: 3).
 		(Win32VariantUnimplementedType new: #float as: 4).
 		(Win32VariantDouble new: #double as: 5).
@@ -105,13 +117,13 @@ Win32Variant >> contentType [
 { #category : #'accessing structure variables' }
 Win32Variant >> data [
 	"This method was automatically generated"
-	^(FFITypeArray ofType: #FFIUInt8 size: 8) fromHandle: (handle copyFrom: OFFSET_DATA to: OFFSET_DATA + 7)
+	^(FFITypeArray ofType: #FFIUInt8 size: 16) fromHandle: (handle copyFrom: OFFSET_DATA to: OFFSET_DATA + 15)
 ]
 
 { #category : #'accessing structure variables' }
 Win32Variant >> data: anObject [
 	"This method was automatically generated"
-	handle replaceFrom: OFFSET_DATA to: OFFSET_DATA + 7 with: anObject getHandle startingAt: 1
+	handle replaceFrom: OFFSET_DATA to: OFFSET_DATA + 15 with: anObject getHandle startingAt: 1
 ]
 
 { #category : #'accessing - private' }

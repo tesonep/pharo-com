@@ -4,6 +4,7 @@ Class {
 	#classVars : [
 		'BOOL',
 		'BYTE',
+		'Byte16',
 		'Byte8',
 		'DWORD',
 		'HANDLE',
@@ -80,6 +81,7 @@ Win32Types class >> initialize [
 	PVOID := #'void*'.
 	
 	Byte8 := FFITypeArray ofType: #byte size: 8.
+	Byte16 := FFITypeArray ofType: #byte size: 16.
 
 	LPOLESTR := #Win32WideString.
 

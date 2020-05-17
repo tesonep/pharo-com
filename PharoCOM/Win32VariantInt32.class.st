@@ -11,11 +11,11 @@ Win32VariantInt32 >> checkIfElementaryTypeAndWrite: aValue to: aVariant [
 
 { #category : #accessing }
 Win32VariantInt32 >> readFrom: aVariant [
-	^ aVariant rawData signedLongAt: 1.
+	^ 	aVariant rawData integerAt: 1 size: 4 signed: true
 ]
 
 { #category : #accessing }
 Win32VariantInt32 >> write: aValue to: aVariant [
 	aVariant vt: self typeNumber.
-	aVariant rawData signedLongAt: 1 put: aValue.
+	aVariant rawData integerAt: 1 put: aValue size: 4 signed: true
 ]

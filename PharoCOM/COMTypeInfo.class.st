@@ -17,19 +17,20 @@ Class {
 }
 
 { #category : #'calculating members' }
-COMTypeInfo >> calculateMethodAt: anInteger [ 
+COMTypeInfo >> calculateMethodAt: anInteger [
 	| pointer funDesc r |
-	
 	pointer := ExternalAddress allocate: Smalltalk wordSize.
 	pointer autoRelease.
-	r := self ffiGetFuncDesc: pointer at: (anInteger - 1).
-	
-	self reportErrorIfNoZero: r.
-	
-	[	
-		funDesc := COMFuncDesc fromHandle: pointer.
-		^ COMMethod fromFuncDesc: funDesc in: self.
-	] ensure: [ funDesc ifNotNil: [ self ffiReleaseFuncDesc: funDesc ] ]
+	r := self ffiGetFuncDesc: pointer at: anInteger - 1.
+	[ self reportErrorIfNoZero: r ]
+		on: Error
+		do: [ :e | 
+			^ COMErrorOnDiscovery new
+				setError: e;
+				yourself ].
+	[ funDesc := COMFuncDesc fromHandle: pointer.
+	^ COMMethod fromFuncDesc: funDesc in: self ]
+		ensure: [ funDesc ifNotNil: [ self ffiReleaseFuncDesc: funDesc ] ]
 ]
 
 { #category : #'calculating members' }
@@ -206,7 +207,8 @@ COMTypeInfo >> getNamesOfMemberID: memberId maxNames: maxNames [
 	
 	cant := holder unsignedLongAt: 1.
 	wideStrings := OrderedCollection new.
-	0 to:(cant - 1) do:[:idx | wideStrings add: (Win32WideString fromHandle: (arrayStrings pointerAt: (1 + (Smalltalk wordSize * idx))))].
+	0 to:(cant - 1) do:[:idx | wideStrings add: (BSTRString fromHandle: (arrayStrings pointerAt: (1 + (Smalltalk wordSize * idx))))].
+	
 	wideStrings do: #autoRelease.
 	
 	^ wideStrings collect: #asString

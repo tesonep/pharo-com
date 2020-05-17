@@ -1,7 +1,7 @@
 Class {
 	#name : #VTableFFICalloutMethodBuilder,
 	#superclass : #FFICalloutMethodBuilder,
-	#category : 'VTable-FFI-Extension'
+	#category : #'VTable-FFI-Extension'
 }
 
 { #category : #private }
@@ -20,7 +20,7 @@ VTableFFICalloutMethodBuilder >> generateFFICallout: builder spec: functionSpec 
 	
 	"iterate arguments in order (in the function) to create the function call"
 	functionSpec arguments
-		do: [ :each | each emitArgument: builder context: sender ].
+		do: [ :each | each emitArgument: builder context: sender inCallout: self requestor].
 	"create the array"
 	builder pushConsArray: functionSpec arguments size.
 	"send call and store into result"
@@ -32,4 +32,5 @@ VTableFFICalloutMethodBuilder >> generateFFICallout: builder spec: functionSpec 
 		emitReturn: builder
 		resultTempVar: #result
 		context: sender
+		inCallout: self requestor
 ]

@@ -14,10 +14,9 @@ Win32VariantBSTRString >> readFrom: aVariant [
 	| bstrStr str |
 	
 	(aVariant rawData pointerAt: 1) isNull ifTrue: [ ^ ''].
-	
+	"We don't need to release because it is in the variant"	
 	bstrStr := BSTRString fromHandle: (aVariant rawData pointerAt: 1).
 	str := bstrStr asString.
-	bstrStr finalize.
 		
 	^ str .
 ]
