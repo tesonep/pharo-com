@@ -59,7 +59,7 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantNull new: #NULL as: 1).
 		(Win32VariantInt16 new: #int16 as: 2).
 		(Win32VariantInt32 new: #int32 as: 3).
-		(Win32VariantUnimplementedType new: #float as: 4).
+		(Win32VariantFloat new: #float as: 4).
 		(Win32VariantDouble new: #double as: 5).
 		(Win32VariantUnimplementedType new: #CURRENCY as: 6).
 		(Win32VariantDate new: #DATE as: 7).
@@ -70,10 +70,10 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantType new: #Win32Variant as: 12).
 		(Win32VariantCOMInstance new: #COMUnknownInstance as: 13).
 		(Win32VariantDecimal new: #DECIMAL as: 14).
-		(Win32VariantUnimplementedType new: #byte as: 16).
-		(Win32VariantUnimplementedType new: #ubyte as: 17).
-		(Win32VariantUnimplementedType new: #uint16 as: 18).
-		(Win32VariantUnimplementedType new: #uint32 as: 19).
+		(Win32VariantByte new: #byte as: 16).
+		(Win32VariantUByte new: #ubyte as: 17).
+		(Win32VariantUInt16 new: #uint16 as: 18).
+		(Win32VariantUInt32 new: #uint32 as: 19).
 		(Win32VariantUnimplementedType new: #longlong as: 20).
 		(Win32VariantUnimplementedType new: #ulonglong as: 21).
 		(Win32VariantUnimplementedType new: #int as: 22).
