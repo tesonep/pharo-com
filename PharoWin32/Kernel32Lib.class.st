@@ -113,27 +113,7 @@ Kernel32Lib >> lookupMessage: codeToLookup [
 
 { #category : #'reporting errors' }
 Kernel32Lib >> reportError: returnCode [
-	| lastError errorMessage codeToLookup |
-
-	lastError := self lastError.
-
-	codeToLookup := returnCode = 0
-		ifTrue: [ lastError ]
-		ifFalse: [ returnCode ].
-
-	errorMessage := self lookupMessage: codeToLookup.
-
-	self
-		error:
-			(String
-				streamContents: [ :s | 
-					s
-						nextPutAll: errorMessage;
-						nextPutAll: ' (';
-						nextPutAll: returnCode hex printString;
-						nextPut: $: ;
-						nextPutAll: lastError printString;
-						nextPut: $) ])
+	Win32Error returnCode: returnCode lastErrorCode: self lastError
 ]
 
 { #category : #'as yet unclassified' }
