@@ -61,7 +61,7 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantInt32 new: #int32 as: 3).
 		(Win32VariantFloat new: #float as: 4).
 		(Win32VariantDouble new: #double as: 5).
-		(Win32VariantUnimplementedType new: #CURRENCY as: 6).
+		(Win32VariantCurrency new: #CURRENCY as: 6).
 		(Win32VariantDate new: #DATE as: 7).
 		(Win32VariantBSTRString new: #BSTRString as: 8).
 		(Win32VariantCOMInstance new: #COMDispatchInstance as: 9).
@@ -87,7 +87,8 @@ Win32Variant class >> initializeTypeMapping [
 		(Win32VariantUnimplementedType new: #String as: 30).
 		(Win32VariantUnimplementedType new: #Win32WideString as: 31).
 		(Win32VariantUnimplementedType new: #RECORD as: 32).
-		(Win32VariantUnimplementedType new: #GUID as: 72)
+		(Win32VariantUnimplementedType new: #GUID as: 72). 
+		"(Win32VariantByteArray new: #ByteArray as: 8209). "
 	} collect: [ :e | e typeNumber -> e ]) asDictionary
 ]
 
