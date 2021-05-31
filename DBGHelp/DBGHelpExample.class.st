@@ -1,7 +1,7 @@
 Class {
 	#name : #DBGHelpExample,
 	#superclass : #Object,
-	#category : #'PharoCOM-DBGHelp'
+	#category : #DBGHelp
 }
 
 { #category : #'as yet unclassified' }

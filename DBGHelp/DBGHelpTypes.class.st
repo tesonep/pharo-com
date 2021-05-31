@@ -11,7 +11,7 @@ Class {
 	#pools : [
 		'Win32Types'
 	],
-	#category : #'PharoCOM-DBGHelp'
+	#category : #DBGHelp
 }
 
 { #category : #'class initialization' }

@@ -19,7 +19,7 @@ Class {
 		'OFFSET_TYPEINDEX',
 		'OFFSET_VALUE'
 	],
-	#category : #'PharoCOM-DBGHelp'
+	#category : #DBGHelp
 }
 
 { #category : #'field definition' }

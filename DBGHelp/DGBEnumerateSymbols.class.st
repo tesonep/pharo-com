@@ -4,7 +4,7 @@ Class {
 	#pools : [
 		'DBGHelpTypes'
 	],
-	#category : #'PharoCOM-DBGHelp'
+	#category : #DBGHelp
 }
 
 { #category : #'instance creation' }
