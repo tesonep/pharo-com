@@ -1,6 +1,6 @@
 Extension { #name : #Kernel32Lib }
 
-{ #category : #'*PharoCOM' }
+{ #category : #'*DBGHelp' }
 Kernel32Lib >> currentProcessHandle [
 	^ self ffiCall: #(HANDLE GetCurrentProcess())
 ]
