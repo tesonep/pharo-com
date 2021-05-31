@@ -1,10 +1,10 @@
 Class {
 	#name : #VTableFFICalloutAPI,
-	#superclass : #FFICalloutAPI,
+	#superclass : #TFCalloutAPI,
 	#instVars : [
 		'tablePosition'
 	],
-	#category : 'VTable-FFI-Extension'
+	#category : #'VTable-FFI-Extension'
 }
 
 { #category : #action }

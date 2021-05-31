@@ -1,7 +1,7 @@
 Class {
 	#name : #FFIExternalVTableObject,
 	#superclass : #FFIExternalObject,
-	#category : 'VTable-FFI-Extension'
+	#category : #'VTable-FFI-Extension'
 }
 
 { #category : #'ffi-calls' }
@@ -19,7 +19,7 @@ FFIExternalVTableObject >> ffiCalloutIn: aContext [
 
 { #category : #'ffi-calls' }
 FFIExternalVTableObject >> modifyFFICall: ffiCall withTablePosition: tablePosition [
-	ffiCall setHandle: (self vtable pointerAt: ((tablePosition - 1) * Smalltalk wordSize) + 1).
+	ffiCall patchFunctionAddress: (self vtable pointerAt: ((tablePosition - 1) * Smalltalk wordSize) + 1).
 	^ ffiCall.
 ]
 

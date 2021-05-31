@@ -45,6 +45,11 @@ COMUnknownInstance >> ffiAddRef [
 	^ self ffiCall: #(ULONG AddRef(self)) at: 2
 ]
 
+{ #category : #finalization }
+COMUnknownInstance >> ffiLibraryName [ 
+	^ OleAut32Lib 
+]
+
 { #category : #'ffi-calls' }
 COMUnknownInstance >> ffiQueryInterface: riid into: holder [
 
