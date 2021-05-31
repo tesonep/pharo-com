@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfPharoWin32,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfPharoWin32'
+	#category : #BaselineOfPharoWin32
 }
 
 { #category : #baselines }
@@ -18,12 +18,15 @@ BaselineOfPharoWin32 >> baseline: spec [
 			package: #'PharoWin32-Registry-Tests' with: [ spec requires: #('PharoWin32-Registry') ];
 
 			package: #'PharoCOM' with: [ spec requires: #('PharoWin32' 'PharoWin32-Registry') ];
-			package: #'PharoCOM-Tests' with: [ spec requires: #('PharoCOM') ].
+			package: #'PharoCOM-Tests' with: [ spec requires: #('PharoCOM') ];
+			
+			package: #'DBGHelp' with: [ spec requires: #('PharoCOM' ) ].
 		
 		spec 
 			group: 'core' with: #('PharoCOM');
+			group: 'dbg' with: #('DBGHelp');
 			group: 'registry' with: #('PharoWin32-Registry' 'core');
 			group: 'com' with: #('PharoCOM' 'core' 'registry');
-			group: 'default' with: #('com' 'tests');
+			group: 'default' with: #('com' 'dbg' 'tests');
 			group: 'tests' with: #('PharoWin32-Tests' 'PharoCOM-Tests' 'PharoWin32-Registry-Tests') ]
 ]
