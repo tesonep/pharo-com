@@ -52,3 +52,13 @@ COMTypeLib >> typeInfos [
 		ifNil: [ self fillTypeInfos.
 			typeInfos ]
 ]
+
+{ #category : #accessing }
+COMTypeLib >> win32Path [ 
+	^ libName win32Path
+]
+
+{ #category : #accessing }
+COMTypeLib >> win64Path [ 
+	^ libName win64Path
+]

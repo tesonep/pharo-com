@@ -7,7 +7,9 @@ Class {
 		'guid',
 		'name',
 		'version',
-		'languageIDs'
+		'languageIDs',
+		'win32Path',
+		'win64Path'
 	],
 	#pools : [
 		'COMTypes'
@@ -42,30 +44,31 @@ COMTypeLibName >> languageIDs: anObject [
 
 { #category : #loading }
 COMTypeLibName >> loadWithRegistryInfo [
+
 	| typeLibHolder returnCode rguid wVerMajor wVerMinor lcid versionArray |
-	
 	typeLibHolder := POINTER_HOLDER new.
-	
+
 	rguid := GUID fromString: self guid.
-	
+
 	versionArray := self version splitOn: '.'.
-	wVerMajor := versionArray first asInteger.
+	wVerMajor := versionArray first asInteger ifNil: [ 
+		             Number readFrom: versionArray first base: 16 ].
 	wVerMinor := versionArray second asInteger.
-	
+
 	lcid := self languageIDs first.
-	
+
 	returnCode := OleAut32Lib uniqueInstance
-		ffiLoadRegTypeLibGuid: rguid getHandle
-		versionMajor: wVerMajor
-		versionMinor: wVerMinor
-		languageId: lcid
-		libraryHolder: typeLibHolder.
-		
+		              ffiLoadRegTypeLibGuid: rguid getHandle
+		              versionMajor: wVerMajor
+		              versionMinor: wVerMinor
+		              languageId: lcid
+		              libraryHolder: typeLibHolder.
+
 	self reportErrorIfNoZero: returnCode.
-	
-	^ (COMTypeLib fromHandle: typeLibHolder value) 
-		libName: self; 
-		yourself
+
+	^ (COMTypeLib fromHandle: typeLibHolder value)
+		  libName: self;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -97,4 +100,19 @@ COMTypeLibName >> version [
 { #category : #accessing }
 COMTypeLibName >> version: anObject [
 	version := anObject
+]
+
+{ #category : #accessing }
+COMTypeLibName >> win32Path [
+	^ win32Path
+]
+
+{ #category : #accessing }
+COMTypeLibName >> win32Path: aFileReference [ 
+	win32Path := aFileReference
+]
+
+{ #category : #accessing }
+COMTypeLibName >> win64Path: aFileReference [ 
+	win64Path := aFileReference
 ]

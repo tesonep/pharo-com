@@ -21,18 +21,41 @@ COMTypeLibRegistryReader >> readAll [
 
 { #category : #reading }
 COMTypeLibRegistryReader >> readKey: key [
-	key subKeys
-		do: [ :sub | | libName languageIDs |
-			libName := sub values detect: [ :e | e name = '' ] ifFound:[:v | v value] ifNone:[nil].
-			languageIDs := self readLanguageIDs: sub.
-			libs add:			
-					(COMTypeLibName new
-						guid: key subKey;
-						name: libName;
-						version: sub subKey;
-						languageIDs: languageIDs;
-						yourself) 
-			]
+
+	key subKeys do: [ :sub | 
+		| libName languageIDs win32 win64 |
+		libName := sub values
+			           detect: [ :e | e name = '' ]
+			           ifFound: [ :v | v value ]
+			           ifNone: [ nil ].
+		languageIDs := self readLanguageIDs: sub.
+
+		key subKeys first subKeys
+			detect: [ :i | i subKey size = 1 and: [ i subKey asInteger isNotNil ] ]
+			ifFound: [ :i | 
+				i subKeys
+					detect: [ :f | f subKey asLowercase = 'win32' ]
+					ifFound: [ :f | 
+						win32 := f values
+							         detect: [ :e | e name = '' ]
+							         ifFound: [ :v | v value asFileReference ]
+							         ifNone: [ nil ] ].
+				i subKeys
+					detect: [ :f | f subKey asLowercase = 'win64' ]
+					ifFound: [ :f | 
+						win64 := f values
+							         detect: [ :e | e name = '' ]
+							         ifFound: [ :v | v value asFileReference ]
+							         ifNone: [ nil ] ] ].
+
+		libs add: (COMTypeLibName new
+				 guid: key subKey;
+				 name: libName;
+				 version: sub subKey;
+				 win32Path: win32;
+				 win64Path: win64;
+				 languageIDs: languageIDs;
+				 yourself) ]
 ]
 
 { #category : #reading }
