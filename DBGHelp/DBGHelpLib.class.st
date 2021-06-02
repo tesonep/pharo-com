@@ -214,8 +214,9 @@ BOOL IMAGEAPI SymEnumTypesByName(
 { #category : #initialize }
 DBGHelpLib >> initLibrary [
 	self resetLibrary.
+	processHandle := self defaultProcessHandle.
 	(self
-		ffiDBGHelpInitializeLibraryWithProcessHandle: self processHandle
+		ffiDBGHelpInitializeLibraryWithProcessHandle: processHandle
 		path: self defaultPath
 		invasive: self defaultInvasive)
 		ifFalse: [ self reportError: 0]
@@ -239,10 +240,10 @@ DBGHelpLib >> loadModule: imageName moduleName: moduleName [
 
 { #category : #convenience }
 DBGHelpLib >> processHandle [
+
 	^ processHandle ifNil: [ 
-		self initLibrary.
-		processHandle := self defaultProcessHandle  
-	].
+		  self initLibrary.
+		  processHandle ]
 ]
 
 { #category : #initialize }
