@@ -52,3 +52,8 @@ COMVar >> value [
 
 	^ value
 ]
+
+{ #category : #accessing }
+COMVar >> varKind [
+	^ varKind
+]

@@ -90,6 +90,12 @@ COMTypeInfo >> calculateVars [
 		typeAttributes ifNotNil: [ self ffiReleaseTypeAttr: typeAttributes ] ]
 ]
 
+{ #category : #convenience }
+COMTypeInfo >> constants [
+
+	^ self vars select: [ :i | i varKind = COMVarKind const item ]
+]
+
 { #category : #querying }
 COMTypeInfo >> dispatchInterface [
 	self typeKind = COMTypeKind dispatch ifTrue:[ ^ self ].
@@ -274,6 +280,13 @@ COMTypeInfo >> implementedTypesNumber [
 	^ implementedTypesNumber ifNil:[self fillTypeAttributes. implementedTypesNumber].
 ]
 
+{ #category : #convenience }
+COMTypeInfo >> instanceVariables [
+
+	^ self vars select: [ :i | 
+		  i varKind = COMVarKind perInstance item asSymbol ]
+]
+
 { #category : #querying }
 COMTypeInfo >> methods [
 	^ methods ifNil: [ methods := self calculateMethods ]
@@ -296,6 +309,11 @@ COMTypeInfo >> printOn: aStream [
 { #category : #querying }
 COMTypeInfo >> properties [
 	^ properties ifNil: [ properties := self calculateProperties ]
+]
+
+{ #category : #convenience }
+COMTypeInfo >> staticVariables [
+	^ self vars select: [ :i | i varKind = COMVarKind static item  ]
 ]
 
 { #category : #private }
