@@ -21,6 +21,16 @@ COMVarKind class >> dispatch [
 ]
 
 { #category : #'as yet unclassified' }
+COMVarKind class >> enumDecl [
+	^ #(
+       VAR_PERINSTANCE 	0
+		 VAR_STATIC 	1
+	    VAR_CONST 	2
+	    VAR_DISPATCH 3
+ 	)
+]
+
+{ #category : #'as yet unclassified' }
 COMVarKind class >> initialize [
 	self initializeEnumeration
 ]
