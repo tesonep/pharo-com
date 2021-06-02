@@ -21,6 +21,11 @@ COMVarKind class >> dispatch [
 ]
 
 { #category : #'as yet unclassified' }
+COMVarKind class >> initialize [
+	self initializeEnumeration
+]
+
+{ #category : #'as yet unclassified' }
 COMVarKind class >> perInstance [ 
  	^ VAR_PERINSTANCE 
 ]
