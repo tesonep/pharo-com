@@ -22,7 +22,9 @@ Class {
 		'TYPEATTR',
 		'TYPEDESC',
 		'TYPEKIND',
-		'VARIANT'
+		'VARDESC',
+		'VARIANT',
+		'VARKIND'
 	],
 	#pools : [
 		'WinRegTypes'
@@ -41,6 +43,7 @@ COMTypes class >> initialize [
 	VARIANT := #'Win32Variant'.
 		
 	TYPEKIND := #COMTypeKind.
+	VARKIND :=  #COMVarKind.
 	TYPEDESC := #COMTypeDesc.
 	IDLDESC := #COMIdlDesc.
 	ELEMDESC := #COMElemDesc.
@@ -49,6 +52,7 @@ COMTypes class >> initialize [
 	CALLCONV := #COMCallConv.
 	TYPEATTR := #COMTypeAttributes.
 	FUNCDESC := #COMFuncDesc.
+	VARDESC := COMVarDesc.
 	PARAMDESC := #COMParamDesc.
 	LPPARAMDESCEX := #'void*'.
 	DISPPARAMS := #COMDispParams.

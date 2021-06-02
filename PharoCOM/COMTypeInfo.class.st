@@ -8,7 +8,8 @@ Class {
 		'typeKind',
 		'typeFlags',
 		'implementedTypesNumber',
-		'name'
+		'name',
+		'vars'
 	],
 	#pools : [
 		'COMTypes'
@@ -53,6 +54,40 @@ COMTypeInfo >> calculateProperties [
 	
 	propNames := ((self methods select: #isProperty) collect: #name) asSet.
 	^ propNames collect: [ :e | COMProperty named: e on: self ]
+]
+
+{ #category : #'calculating members' }
+COMTypeInfo >> calculateVarAt: anInteger [
+
+	| pointer varDesc r |
+	pointer := ExternalAddress allocate: Smalltalk wordSize.
+	pointer autoRelease.
+	r := self ffiGetVarDesc: pointer at: anInteger - 1.
+	[ self reportErrorIfNoZero: r ]
+		on: Error
+		do: [ :e | 
+			^ COMErrorOnDiscovery new
+				  setError: e;
+				  yourself ].
+	[ 
+	varDesc := COMVarDesc fromHandle: pointer.
+	^ COMVar fromFuncDesc: varDesc in: self ] ensure: [ 
+		varDesc ifNotNil: [ self ffiReleaseVarDesc: varDesc ] ]
+]
+
+{ #category : #'calculating members' }
+COMTypeInfo >> calculateVars [
+
+	| numberOfVars typeAttributes all |
+	[ 
+	typeAttributes := self typeAttributes.
+	numberOfVars := typeAttributes cVars.
+	all := OrderedCollection new.
+
+	1 to: numberOfVars do: [ :idx | all add: (self calculateVarAt: idx) ].
+
+	^ all ] ensure: [ 
+		typeAttributes ifNotNil: [ self ffiReleaseTypeAttr: typeAttributes ] ]
 ]
 
 { #category : #querying }
@@ -127,6 +162,12 @@ COMTypeInfo >> ffiReleaseFuncDesc: funcDesc [
 { #category : #'ffi-calls' }
 COMTypeInfo >> ffiReleaseTypeAttr: typeattr [
 	^ self ffiCall: #(void ReleaseTypeAttr(self, TYPEATTR* typeattr)) at: 20
+]
+
+{ #category : #'ffi-calls' }
+COMTypeInfo >> ffiReleaseVarDesc: varDesc [
+
+	^ self ffiCall: #(void ReleaseVarDesc(self, VARDESC* varDesc)) at: 22
 ]
 
 { #category : #private }
@@ -279,4 +320,10 @@ COMTypeInfo >> typeFlags [
 { #category : #querying }
 COMTypeInfo >> typeKind [
 	^ typeKind ifNil:[ self fillTypeAttributes. typeKind].
+]
+
+{ #category : #'calculating members' }
+COMTypeInfo >> vars [
+
+	^ vars ifNil: [ vars := self calculateVars ]
 ]
