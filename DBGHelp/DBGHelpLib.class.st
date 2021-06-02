@@ -34,6 +34,25 @@ Class {
 	#category : #DBGHelp
 }
 
+{ #category : #'class initialization' }
+DBGHelpLib class >> initialize [
+
+	SessionManager default
+		registerSystemClassNamed: self name
+		atPriority: 60
+]
+
+{ #category : #'class initialization' }
+DBGHelpLib class >> shutDown: quitting [ 
+	quitting ifFalse: [ ^ self ]. 
+	self uniqueInstance resetLibrary 
+]
+
+{ #category : #'class initialization' }
+DBGHelpLib class >> startUp: isNewSession [ 
+	isNewSession ifTrue: [ self uniqueInstance ensureProcessHandleIsNil ]
+]
+
 { #category : #convenience }
 DBGHelpLib >> defaultInvasive [
 	^ true 
@@ -47,6 +66,11 @@ DBGHelpLib >> defaultPath [
 { #category : #convenience }
 DBGHelpLib >> defaultProcessHandle [
 	^ Kernel32Lib uniqueInstance currentProcessHandle "90480 + ((Random seed: DateAndTime now asUnixTime) nextInt: 4000) "
+]
+
+{ #category : #'reporting errors' }
+DBGHelpLib >> ensureProcessHandleIsNil [
+	processHandle := nil
 ]
 
 { #category : #enumerations }
@@ -215,7 +239,10 @@ DBGHelpLib >> loadModule: imageName moduleName: moduleName [
 
 { #category : #convenience }
 DBGHelpLib >> processHandle [
-	^ processHandle ifNil: [ processHandle := self defaultProcessHandle  ]
+	^ processHandle ifNil: [ 
+		self initLibrary.
+		processHandle := self defaultProcessHandle  
+	].
 ]
 
 { #category : #initialize }
