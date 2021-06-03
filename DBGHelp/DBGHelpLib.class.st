@@ -240,10 +240,9 @@ DBGHelpLib >> loadModule: imageName moduleName: moduleName [
 
 { #category : #convenience }
 DBGHelpLib >> processHandle [
-
-	^ processHandle ifNil: [ 
-		  self initLibrary.
-		  processHandle ]
+	(processHandle isNil or: [ processHandle isNull ]) ifTrue: [ 
+		self initLibrary ].
+	^ processHandle
 ]
 
 { #category : #initialize }
