@@ -43,6 +43,27 @@ COMTypeLibName >> languageIDs: anObject [
 ]
 
 { #category : #loading }
+COMTypeLibName >> load [
+
+	[ ^ self loadWithRegistryInfo ]
+		on: Error
+		do: [ :e | 
+			" it could be that the file exists, and it is not in the registry. then we have to open this from the path file.  "
+			
+			^ self loadFromFile. 
+			
+	 ]
+]
+
+{ #category : #loading }
+COMTypeLibName >> loadFromFile [
+
+	^ (OleAut32Lib uniqueInstance loadTypeLibEx: win32Path fullName)
+		  libName: self;
+		  yourself
+]
+
+{ #category : #loading }
 COMTypeLibName >> loadWithRegistryInfo [
 
 	| typeLibHolder returnCode rguid wVerMajor wVerMinor lcid versionArray |
