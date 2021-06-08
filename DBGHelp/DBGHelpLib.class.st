@@ -224,7 +224,12 @@ DBGHelpLib >> initLibrary [
 
 { #category : #'load module' }
 DBGHelpLib >> loadModule: imageName [
-	^ self loadModule: imageName moduleName: nil
+
+	^ [ self loadModule: imageName moduleName: nil ]
+		  on: Win32Error
+		  do: [ :e | 
+			  self initLibrary.
+			  ^ self loadModule: imageName moduleName: nil ]
 ]
 
 { #category : #'load module' }
