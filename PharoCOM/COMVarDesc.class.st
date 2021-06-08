@@ -44,6 +44,16 @@ COMVarDesc >> elemdescVar: anObject [
 ]
 
 { #category : #'accessing structure variables' }
+COMVarDesc >> hasValueToRead [
+
+	self varkind = COMVarKind static ifTrue: [ 
+		self halt: ' We should think what happen in the static case ' ].
+	^ ({ 
+		   COMVarKind perInstance.
+		   COMVarKind dispatch } includes: self varkind) not
+]
+
+{ #category : #'accessing structure variables' }
 COMVarDesc >> lpstrSchema [
 	"This method was automatically generated"
 	^ExternalData fromHandle: (handle pointerAt: OFFSET_LPSTRSCHEMA) type: ExternalType void asPointerType
@@ -57,8 +67,12 @@ COMVarDesc >> lpstrSchema: anObject [
 
 { #category : #'accessing structure variables' }
 COMVarDesc >> lpvarValue [
+
+	self hasValueToRead ifFalse: [ 
+		self error:
+			'To use the content of this value in this kind of var may lead to segmentation fault' ].
 	"This method was automatically generated"
-	^Win32Variant fromHandle: (handle pointerAt: OFFSET_LPVARVALUE)
+	^ Win32Variant fromHandle: (handle pointerAt: OFFSET_LPVARVALUE)
 ]
 
 { #category : #'accessing structure variables' }

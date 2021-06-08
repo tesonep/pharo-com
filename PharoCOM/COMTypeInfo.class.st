@@ -18,6 +18,12 @@ Class {
 }
 
 { #category : #'calculating members' }
+COMTypeInfo >> aliasType [
+
+	^ self typeAttributes tdescAlias calculateType
+]
+
+{ #category : #'calculating members' }
 COMTypeInfo >> calculateMethodAt: anInteger [
 	| pointer funDesc r |
 	pointer := ExternalAddress allocate: Smalltalk wordSize.

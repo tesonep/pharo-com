@@ -5,7 +5,8 @@ Class {
 		'name',
 		'varKind',
 		'memberId',
-		'value'
+		'value',
+		'typeName'
 	],
 	#category : #'PharoCOM-TypeLibraries'
 }
@@ -22,11 +23,14 @@ COMVar class >> fromFuncDesc: aCOMVarDesc in: aCOMTypeInfo [
 COMVar >> from: aCOMVarDesc in: aCOMTypeInfo [
 
 	name := (aCOMTypeInfo
-		        getNamesOfMemberID: aCOMVarDesc memid
-		        maxNames: 1) first.
+		         getNamesOfMemberID: aCOMVarDesc memid
+		         maxNames: 1) first.
 	varKind := aCOMVarDesc varkind item.
-	memberId := aCOMVarDesc memid. 
-	value := aCOMVarDesc lpvarValue read.
+	memberId := aCOMVarDesc memid.
+	aCOMVarDesc hasValueToRead
+		ifTrue: [ value := aCOMVarDesc lpvarValue read ]
+		ifFalse: [ 
+		typeName := aCOMVarDesc elemdescVar calculateType typeName ]
 ]
 
 { #category : #accessing }
@@ -45,6 +49,11 @@ COMVar >> printOn: aStream [
 		nextPutAll: ' = ';
 		nextPutAll: value asString;
 		nextPutAll: ')'
+]
+
+{ #category : #'instance creation' }
+COMVar >> typeName [
+	^ typeName
 ]
 
 { #category : #'instance creation' }
