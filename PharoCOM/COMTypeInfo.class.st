@@ -14,8 +14,56 @@ Class {
 	#pools : [
 		'COMTypes'
 	],
+	#classInstVars : [
+		'typeFeaturesRegistry'
+	],
 	#category : #'PharoCOM-TypeLibraries'
 }
+
+{ #category : #'instance creation' }
+COMTypeInfo class >> fromHandle: aHandle [
+
+	| instance reg |
+	instance := super fromHandle: aHandle.
+	self typeFeaturesRegistry at: instance guid ifPresent: [ :r | 
+		instance loadFeaturesFrom: r.
+		^ instance ].
+	instance fillAll.
+	reg := Dictionary new.
+
+	self slots do: [ :s | reg at: s put: (s read: instance) ].
+	self typeFeaturesRegistry at: instance guid put: reg.
+	^ instance 
+]
+
+{ #category : #'instance creation' }
+COMTypeInfo class >> initialize [
+
+	(Smalltalk classNamed: #SessionManager) ifNotNil: [ 
+		:sessionManagerClass | 
+		sessionManagerClass default
+			registerSystemClassNamed: self name
+			atPriority: 60 ]
+]
+
+{ #category : #'instance creation' }
+COMTypeInfo class >> reset [
+
+	typeFeaturesRegistry := nil
+]
+
+{ #category : #'instance creation' }
+COMTypeInfo class >> startUp: resuming [
+
+	"If starting the image afresh the types are to be discarded ."
+
+	resuming ifTrue: [ self reset ]
+]
+
+{ #category : #'instance creation' }
+COMTypeInfo class >> typeFeaturesRegistry [
+	 ^ typeFeaturesRegistry ifNil: [ typeFeaturesRegistry := Dictionary new  ]
+]
 
 { #category : #'calculating members' }
 COMTypeInfo >> aliasType [
@@ -291,6 +339,12 @@ COMTypeInfo >> instanceVariables [
 
 	^ self vars select: [ :i | 
 		  i varKind = COMVarKind perInstance item asSymbol ]
+]
+
+{ #category : #'as yet unclassified' }
+COMTypeInfo >> loadFeaturesFrom: aDictionary [
+
+	aDictionary associationsDo: [ :a | a key write: a value to: self ]
 ]
 
 { #category : #querying }
