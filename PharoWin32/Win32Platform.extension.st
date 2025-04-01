@@ -1,6 +1,6 @@
-Extension { #name : #Win32Platform }
+Extension { #name : 'Win32Platform' }
 
-{ #category : #'*PharoWin32' }
+{ #category : '*PharoWin32' }
 Win32Platform >> ffiAlignment [
 	"Windows structure alignment is 8. 
 	 Check here: https://msdn.microsoft.com/en-us/library/aa290049(v=vs.71).aspx"

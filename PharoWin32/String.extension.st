@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*PharoWin32' }
+{ #category : '*PharoWin32' }
 String >> asWin32WideString [
 	^ Win32WideString fromString: self.
 ]

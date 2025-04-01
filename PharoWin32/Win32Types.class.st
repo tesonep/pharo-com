@@ -1,6 +1,6 @@
 Class {
-	#name : #Win32Types,
-	#superclass : #SharedPool,
+	#name : 'Win32Types',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'BOOL',
 		'BYTE',
@@ -35,10 +35,12 @@ Class {
 		'VARTYPE',
 		'WORD'
 	],
-	#category : #'PharoWin32-Types'
+	#category : 'PharoWin32-Types',
+	#package : 'PharoWin32',
+	#tag : 'Types'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Win32Types class >> initialize [
 	" 
 		self initialize 

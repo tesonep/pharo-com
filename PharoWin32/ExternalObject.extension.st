@@ -1,6 +1,6 @@
-Extension { #name : #ExternalObject }
+Extension { #name : 'ExternalObject' }
 
-{ #category : #'*PharoWin32' }
+{ #category : '*PharoWin32' }
 ExternalObject class >> null [
 	^ self new
 		setHandle: ExternalAddress null;

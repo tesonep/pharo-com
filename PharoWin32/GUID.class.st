@@ -1,6 +1,6 @@
 Class {
-	#name : #GUID,
-	#superclass : #FFIExternalStructure,
+	#name : 'GUID',
+	#superclass : 'FFIExternalStructure',
 	#classVars : [
 		'OFFSET_DATA1',
 		'OFFSET_DATA2',
@@ -10,10 +10,12 @@ Class {
 	#pools : [
 		'Win32Types'
 	],
-	#category : #'PharoWin32-Objects'
+	#category : 'PharoWin32-Objects',
+	#package : 'PharoWin32',
+	#tag : 'Objects'
 }
 
-{ #category : #copying }
+{ #category : 'copying' }
 GUID class >> copy: other [
 	| guid |
 	guid := self externalNew autoRelease; yourself.
@@ -23,7 +25,7 @@ GUID class >> copy: other [
 	^ guid.
 ]
 
-{ #category : #'field definition' }
+{ #category : 'field definition' }
 GUID class >> fieldsDesc [ 
 	"
 	self rebuildFieldAccessors
@@ -36,7 +38,7 @@ GUID class >> fieldsDesc [
 	)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GUID class >> fromString: aString [
 	| guid |
 	guid := self externalNew autoRelease; yourself.
@@ -45,12 +47,12 @@ GUID class >> fromString: aString [
 	^ guid.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GUID class >> nullGuid [
 	^ self fromString: '{00000000-0000-0000-0000-000000000000}'
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GUID >> asString [
 	| data1 data2 data3 data4 |
 	data1 := self data1.
@@ -74,65 +76,65 @@ GUID >> asString [
 			s nextPut: $} ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 GUID >> copy [
 	^ self class copy: self
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data1 [
 	"This method was automatically generated"
 	^handle platformUnsignedLongAt: OFFSET_DATA1
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data1: anObject [
 	"This method was automatically generated"
 	^handle platformUnsignedLongAt: OFFSET_DATA1 put: anObject
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data2 [
 	"This method was automatically generated"
 	^handle unsignedShortAt: OFFSET_DATA2
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data2: anObject [
 	"This method was automatically generated"
 	handle unsignedShortAt: OFFSET_DATA2 put: anObject
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data3 [
 	"This method was automatically generated"
 	^handle unsignedShortAt: OFFSET_DATA3
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data3: anObject [
 	"This method was automatically generated"
 	handle unsignedShortAt: OFFSET_DATA3 put: anObject
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data4 [
 	"This method was automatically generated"
 	^(FFITypeArray ofType: FFIUInt8 size: 8) fromHandle: (handle copyFrom: OFFSET_DATA4 to: OFFSET_DATA4 + 7)
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 GUID >> data4: anObject [
 	"This method was automatically generated"
 	handle replaceFrom: OFFSET_DATA4 to: OFFSET_DATA4 + 7 with: anObject getHandle startingAt: 1
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GUID >> pad: aNumber to: digits [.
 	^ (('0' repeat: digits) , (aNumber printStringBase: 16)) last: digits.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GUID >> printOn: aStream [
 	aStream
 		nextPutAll: 'GUID (';
