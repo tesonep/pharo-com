@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfPharoWin32 }
+Package { #name : 'BaselineOfPharoWin32' }
